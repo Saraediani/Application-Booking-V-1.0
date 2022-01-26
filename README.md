@@ -1,2 +1,1 @@
-# booking-api
-Application Booking V 1.0
+ A restful api that allows users to login as administrator or user (user / owner).
