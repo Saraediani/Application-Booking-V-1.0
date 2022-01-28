@@ -34,7 +34,7 @@ export default {
       handler: OwnerController.updateowner,
     },
     {
-      method: 'get',
+      method: 'delete',
       path: '/:id',
       handler: OwnerController.deleteowner,
     },
