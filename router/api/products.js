@@ -1,5 +1,8 @@
 import ProductsController from '../../app/controllers/api/products-controller.js';
 import auth from '../../app/middlewares/authentification.js';
+import upload from '../../app/middlewares/upload.js';
+
+
 
 export default {
   group: {
@@ -14,7 +17,7 @@ export default {
     {
       method: 'post',
       path: '/',
-      middlewares: [auth],
+      middlewares: [auth, upload],
       handler: ProductsController.createProduct,
     },
     {
