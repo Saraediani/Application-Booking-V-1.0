@@ -11,7 +11,7 @@ const productsShema = new mongoose.Schema({
     required: [true, 'product must have a desc'],
   },
   productImage: { 
-    type: String, 
+    type: Array, 
     required: [true, 'product must have a img'],
    },
   price: {
