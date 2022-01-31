@@ -15,7 +15,7 @@ class Server {
   start() {
     this._setupRoutes();
     this._listen();
-    this._upload()
+    
   }
 
   _setupRoutes() {
@@ -28,9 +28,7 @@ class Server {
     });
   }
 
-  _upload(){
-    this.app.use('/uploads', express.static(path.join('uploads')))
-  }
+  
 
   
 }
