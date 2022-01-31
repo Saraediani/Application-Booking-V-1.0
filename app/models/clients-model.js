@@ -20,11 +20,23 @@ const clientsShema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
+  phone: {
+    type: String,
+    // validate: [validator.isEmail, 'Please enter a valid email'],
+    // required: [true, 'user must have a phone'],
+    unique: true,
+  },
+  adresse: {
+    type: String,
+    // validate: [validator.isEmail, 'Please enter a valid email'],
+    // required: [true, 'user must have a adress'],
+    unique: true,
+  },
   role: {
     type: String,
     required: false,
     default: 'user',
-    enum: ['user', 'admin'],
+    enum: ['user', 'client'],
   },
   created_at: {
     type: Date,
