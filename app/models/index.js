@@ -1,16 +1,11 @@
 import mongoose from 'mongoose';
 import usersShema from './users-model.js';
-// <<<<<<< HEAD
 import hotelsShema from './hotels-model.js';
 import ownerShema from './owner.js';
-
-
+import reservationSchema from './reservation-model.js';
 import clientsShema from './clients-model.js';
 
-
 const db = process.env.DATABASE_LOCAL;
-
-
 
 mongoose
   .connect(process.env.DB, {
@@ -24,7 +19,12 @@ mongoose
   });
 
 const models = {};
+
+
+models.reservations = mongoose.model('Reservation', reservationSchema)
+
 models.hotels = mongoose.model('hotels', hotelsShema);
+
 models.users = mongoose.model('Users', usersShema);
 
 models.owners = mongoose.model('owners', ownerShema);
