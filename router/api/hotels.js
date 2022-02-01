@@ -1,37 +1,41 @@
-import HotelsController from '../../app/controllers/api/Hotels-controller.js';
+import hotelsController from '../../app/controllers/api/hotels-controller.js';
 import auth from '../../app/middlewares/authentification.js';
+import upload from '../../app/middlewares/upload.js';
+
+
 
 export default {
-    group: {
-        prefix: '/hotels',
+  group: {
+    prefix: '/hotels',
+  },
+  routes: [
+    {
+      method: 'get',
+      path: '/',
+      handler: hotelsController.gethotels,
     },
-    routes: [{
-            method: 'get',
-            path: '/',
-            handler: HotelsController.getHotels,
-        },
-        {
-            method: 'post',
-            path: '/',
-            middlewares: [auth],
-            handler: HotelsController.createProduct,
-        },
-        {
-            method: 'get',
-            path: '/:id',
-            handler: HotelsController.getProduct,
-        },
-        {
-            method: 'put',
-            path: '/:id',
-            middlewares: [auth],
-            handler: HotelsController.updateProduct,
-        },
-        {
-            method: 'delete',
-            middlewares: [auth],
-            path: '/:id',
-            handler: HotelsController.deleteProduct,
-        },
-    ],
+    {
+      method: 'post',
+      path: '/',
+      middlewares: [auth, upload],
+      handler: hotelsController.createhotel,
+    },
+    {
+      method: 'get',
+      path: '/:id',
+      handler: hotelsController.gethotel,
+    },
+    {
+      method: 'put',
+      path: '/:id',
+      middlewares: [auth],
+      handler: hotelsController.updatehotel,
+    },
+    {
+      method: 'delete',
+      middlewares: [auth],
+      path: '/:id',
+      handler: hotelsController.deletehotel,
+    },
+  ],
 };

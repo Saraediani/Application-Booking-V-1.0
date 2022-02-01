@@ -27,7 +27,7 @@ import multer from 'multer';
   });
 
 
- const uploads = upload.array('productImage', 8)
+ const uploads = upload.array('hotelImage', 8)
 
   
   

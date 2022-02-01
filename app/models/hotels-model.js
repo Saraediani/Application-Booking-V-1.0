@@ -14,6 +14,10 @@ const hotelsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'user must have a name']
     },
+    hotelImage: { 
+        type: Array, 
+        required: [true, 'hotel must have a img'],
+       },
     address: {
         type: String,
         required: [true, 'user must have a name']

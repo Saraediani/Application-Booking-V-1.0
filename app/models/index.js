@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import usersShema from './users-model.js';
-import productsShema from './products-model.js';
+import hotelsShema from './hotels-model.js';
 import ownerShema from './owner.js';
 
 
@@ -20,7 +20,7 @@ mongoose
   });
 
 const models = {};
-models.products = mongoose.model('Products', productsShema);
+models.hotels = mongoose.model('hotels', hotelsShema);
 models.users = mongoose.model('Users', usersShema);
 models.owners = mongoose.model('owners', ownerShema);
 
