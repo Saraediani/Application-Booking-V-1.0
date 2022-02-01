@@ -2,7 +2,7 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 
-const usersShema = new mongoose.Schema({
+const clientsShema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'user must have a name'],
@@ -20,12 +20,23 @@ const usersShema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
+  phone: {
+    type: String,
+    // validate: [validator.isEmail, 'Please enter a valid email'],
+    // required: [true, 'user must have a phone'],
+    unique: true,
+  },
+  adresse: {
+    type: String,
+    // validate: [validator.isEmail, 'Please enter a valid email'],
+    // required: [true, 'user must have a adress'],
+    unique: true,
+  },
   role: {
     type: String,
     required: false,
     default: 'user',
-    enum: ['user', 'admin', 'owner', 'client'],
-
+    enum: ['user', 'client'],
   },
   created_at: {
     type: Date,
@@ -42,11 +53,11 @@ const usersShema = new mongoose.Schema({
   },
 });
 
-usersShema.pre('save', async function (next) {
+clientsShema.pre('save', async function (next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 12);
     next();
   }
 });
 
-export default usersShema;
+export default clientsShema;
