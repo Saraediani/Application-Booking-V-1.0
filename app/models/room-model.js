@@ -16,7 +16,7 @@ const roomSchema = new mongoose.Schema({
     },
     roomImage: { 
         type: Array, 
-        required: [true, 'hotel must have a img'],
+        required: [true, 'room must have a img'],
        },
     status: {
         type: Boolean,

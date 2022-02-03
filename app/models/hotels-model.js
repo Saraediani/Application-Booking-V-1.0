@@ -3,16 +3,16 @@ import mongoose from 'mongoose';
 const hotelsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'user must have a name'],
+        required: [true, 'hotel must have a name'],
         unique: true,
     },
     description: {
         type: String,
-        required: [true, 'user must have a name'],
+        required: [true, 'hotel must have a name'],
     },
     type: {
         type: String,
-        required: [true, 'user must have a name']
+        // required: [true, 'hotel must have a name']
     },
     hotelImage: { 
         type: Array, 
@@ -20,7 +20,7 @@ const hotelsSchema = new mongoose.Schema({
        },
     address: {
         type: String,
-        required: [true, 'user must have a name']
+        required: [true, 'hotel must have a address']
     },
     price: {
         type: Number,

@@ -1,7 +1,7 @@
-import roomsController from '../../app/controllers/room-controller.js';
+import roomsController from '../../app/controllers/api/room-controller.js';
 import auth from '../../app/middlewares/authentification.js';
 import upload  from '../../app/middlewares/upload.js';
-
+import authorization from '../../app/middlewares/authorization.js';
 
 
 export default {
@@ -10,7 +10,7 @@ export default {
     middlewares: [
       auth,
       function (req, res, next) {
-        authorization(req, res, next, 'admin', 'owner',);
+        authorization(req, res, next, 'admin', 'owner','user');
       },
     ],
   },

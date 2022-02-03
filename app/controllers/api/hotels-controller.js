@@ -1,6 +1,5 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
-import path from 'path';
 
 
 class hotelsController {
