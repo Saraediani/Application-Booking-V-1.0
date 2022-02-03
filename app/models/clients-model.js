@@ -36,7 +36,7 @@ const clientsShema = new mongoose.Schema({
     type: String,
     required: false,
     default: 'user',
-    enum: ['user', 'client'],
+    enum: ['user', 'client', 'owner'],
   },
   created_at: {
     type: Date,

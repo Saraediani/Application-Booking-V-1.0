@@ -4,6 +4,7 @@ import hotelsShema from './hotels-model.js';
 import ownerShema from './owner.js';
 import reservationSchema from './reservation-model.js';
 import clientsShema from './clients-model.js';
+import roomSchema from './room-model.js';
 
 const db = process.env.DATABASE_LOCAL;
 
@@ -24,6 +25,8 @@ const models = {};
 models.reservations = mongoose.model('Reservation', reservationSchema)
 
 models.hotels = mongoose.model('hotels', hotelsShema);
+
+models.rooms = mongoose.model('rooms', roomSchema);
 
 models.users = mongoose.model('Users', usersShema);
 

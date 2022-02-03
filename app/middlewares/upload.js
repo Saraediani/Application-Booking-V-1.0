@@ -11,27 +11,22 @@ import multer from 'multer';
     }
   });
   
-  // const fileFilter = (req, file, cb) => {
-  //   // reject a file
-  //   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-  //     cb(null, true);
-  //   } else {
-  //     cb(null, false);
-  //   }
-  // };
-
-
   const upload = multer({
    
     storage: storage
   });
 
 
- const uploads = upload.array('hotelImage', 8)
+ const uploads = upload.array('hotelImage', 8);
+
+ const uploadroom = upload.array('roomImage', 8)
 
   
   
 
 
-export default uploads;
+export default {
+  uploads,
+  uploadroom
+};
 

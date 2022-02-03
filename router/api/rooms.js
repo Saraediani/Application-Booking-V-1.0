@@ -1,12 +1,12 @@
-import hotelsController from '../../app/controllers/api/hotels-controller.js';
+import roomsController from '../../app/controllers/room-controller.js';
 import auth from '../../app/middlewares/authentification.js';
-import upload from '../../app/middlewares/upload.js';
+import upload  from '../../app/middlewares/upload.js';
 
 
 
 export default {
   group: {
-    prefix: '/hotels',
+    prefix: '/rooms',
     middlewares: [
       auth,
       function (req, res, next) {
@@ -18,30 +18,30 @@ export default {
     {
       method: 'get',
       path: '/',
-      handler: hotelsController.gethotels,
+      handler: roomsController.getrooms,
     },
     {
       method: 'post',
       path: '/',
-      middlewares: [auth, upload.uploads],
-      handler: hotelsController.createhotel,
+      middlewares: [auth, upload.uploadroom],
+      handler: roomsController.createroom,
     },
     {
       method: 'get',
       path: '/:id',
-      handler: hotelsController.gethotel,
+      handler: roomsController.getroom,
     },
     {
       method: 'put',
       path: '/:id',
       middlewares: [auth],
-      handler: hotelsController.updatehotel,
+      handler: roomsController.updateroom,
     },
     {
       method: 'delete',
       middlewares: [auth],
       path: '/:id',
-      handler: hotelsController.deletehotel,
+      handler: roomsController.deleteroom,
     },
   ],
 };
