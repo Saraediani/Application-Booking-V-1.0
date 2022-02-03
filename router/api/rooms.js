@@ -1,40 +1,41 @@
-import hotelsController from '../../app/controllers/api/hotels-controller.js';
+import roomsController from "../../app/controllers/api/rooms-controllers.js";
 import auth from '../../app/middlewares/authentification.js';
-import upload from '../../app/middlewares/upload.js';
+import uploads from '../../app/middlewares/upload.js';
+
 
 
 
 export default {
     group: {
-        prefix: '/hotels',
+        prefix: '/rooms',
     },
     routes: [{
             method: 'get',
             path: '/',
-            handler: hotelsController.gethotels,
+            handler: roomsController.getRooms,
         },
         {
             method: 'post',
             path: '/',
-            middlewares: [auth, upload.uploads],
-            handler: hotelsController.createhotel,
+            middlewares: [auth, uploads.uploadroom],
+            handler: roomsController.createRoom,
         },
         {
             method: 'get',
             path: '/:id',
-            handler: hotelsController.gethotel,
+            handler: roomsController.getRoom,
         },
         {
             method: 'put',
             path: '/:id',
             middlewares: [auth],
-            handler: hotelsController.updatehotel,
+            handler: roomsController.updateRoom,
         },
         {
             method: 'delete',
             middlewares: [auth],
             path: '/:id',
-            handler: hotelsController.deletehotel,
+            handler: roomsController.deleteRoom,
         },
     ],
 };

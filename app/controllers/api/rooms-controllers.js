@@ -1,16 +1,15 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
-import path from 'path';
 
 
-class hotelsController {
-    async gethotel(req, res) {
+class roomsController {
+    async getRoom(req, res) {
         try {
-            const hotel = await models.hotels.findById(req.params.id);
+            const room = await models.rooms.findById(req.params.id);
             res.status(202).json({
                 status: 'success',
                 data: {
-                    hotel,
+                    room,
                 },
             });
         } catch (err) {
@@ -19,13 +18,13 @@ class hotelsController {
     }
 
 
-    async gethotels(req, res) {
+    async getRooms(req, res) {
         try {
-            const hotels = await models.hotels.find();
+            const rooms = await models.rooms.find();
             res.status(202).json({
                 status: 'success',
                 data: {
-                    hotels,
+                    rooms,
                 },
             });
         } catch (err) {
@@ -33,51 +32,32 @@ class hotelsController {
         }
     }
 
-    async createhotel(req, res) {
-        let images = []
+    async createRoom(req, res) {
+        const images = []
         const uploadedImages = req.files
             // console.log(uploadedImages);
         for (const uploadedImage of uploadedImages) {
             images.push(uploadedImage.filename)
         }
-        // console.log(images);
-        // console.log('result'+ ':' + req.file);
-        // res.send('file uploaded')
-        //  try{ 
-        //    console.log(req.body);
-        //   const newhotels = await models.hotels.create(req.body);
-        //   res.status(202).json({
-        //     status: 'success',
-        //     data: {
-        //       hotels : newhotels,
-        //     },
-        //   });
-
-        // } catch (err) {
-        //   throw new AppException(err, 400);
-        // }
-        // console.log('result'+ ':' + req.file);
-        const hotels = models.hotels
-        const hotel = new hotels({
+        const rooms = models.rooms
+        const room = new rooms({
             name: req.body.name,
-            price: req.body.price,
             description: req.body.description,
             type: req.body.type,
-            address: req.body.address,
-            hotelImage: images
+            number: req.body.number,
+            roomImage: images
         });
 
-        hotel.save().then(result => {
+        room.save().then(result => {
             // console.log(result);
             res.status(201).json({
-                message: 'Created hotel successfully',
-                createdhotel: {
+                message: 'Created room successfully',
+                createdroom: {
                     name: result.name,
-                    price: result.price,
                     description: result.description,
-                    hotelImage: result.hotelImage,
+                    roomImage: result.roomImage,
                     type: result.type,
-                    address: result.description
+                    number: result.number
                 }
             });
         }).catch(err => {
@@ -91,10 +71,10 @@ class hotelsController {
 
     }
 
-    async updatehotel(req, res) {
+    async updateRoom(req, res) {
 
         try {
-            const hotels = await models.hotels.findByIdAndUpdate(
+            const rooms = await models.rooms.findByIdAndUpdate(
                 req.params.id,
                 req.body, {
                     new: true,
@@ -105,7 +85,7 @@ class hotelsController {
             res.status(202).json({
                 status: 'success',
                 data: {
-                    hotels,
+                    rooms,
                 },
             });
         } catch (err) {
@@ -113,14 +93,14 @@ class hotelsController {
         }
     }
 
-    async deletehotel(req, res) {
+    async deleteroom(req, res) {
         try {
-            const hotels = await models.hotels.findByIdAndDelete(req.params.id);
+            const rooms = await models.rooms.findByIdAndDelete(req.params.id);
 
             res.status(202).json({
                 status: 'success',
                 data: {
-                    hotels,
+                    rooms,
                 },
             });
         } catch (err) {
@@ -129,4 +109,4 @@ class hotelsController {
     }
 }
 
-export default new hotelsController();
+export default new roomsController();
