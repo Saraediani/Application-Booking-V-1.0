@@ -24,7 +24,7 @@ export default {
     {
       method: 'post',
       path: '/',
-      middlewares: [auth, upload.uploads],
+      middlewares: [auth, upload.fileUpload],
       handler: hotelsController.createhotel,
     },
     {

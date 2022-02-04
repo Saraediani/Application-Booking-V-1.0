@@ -35,27 +35,11 @@ class hotelsController {
   async createhotel(req, res) {
     let images = []
     const uploadedImages = req.files
-    console.log(uploadedImages);
+    // console.log('fff')
     for (const uploadedImage of uploadedImages){
       images.push(uploadedImage.filename)
     }
-    // console.log(images);
-    // console.log('result'+ ':' + req.file);
-    // res.send('file uploaded')
-  //  try{ 
-  //    console.log(req.body);
-  //   const newhotels = await models.hotels.create(req.body);
-  //   res.status(202).json({
-  //     status: 'success',
-  //     data: {
-  //       hotels : newhotels,
-  //     },
-  //   });
-     
-  // } catch (err) {
-  //   throw new AppException(err, 400);
-  // }
-  // console.log('result'+ ':' + req.file);
+
   const hotels = models.hotels
   const hotel = new hotels({
     name: req.body.name,
@@ -63,6 +47,7 @@ class hotelsController {
     description: req.body.description,
     type: req.body.type,
     address: req.body.address,
+    cover_image: req.file,
     hotelImage: images
     });
 
