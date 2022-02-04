@@ -14,7 +14,7 @@ import multer from 'multer';
   const cover_storage = multer.diskStorage({
     destination: function(req, file, cb) {
     
-      cb(null, './cover_hotels');
+      cb(null, './room_images');
     },
     filename: function(req, file, cb) {
 
@@ -24,7 +24,7 @@ import multer from 'multer';
 
   const cover_upload = multer({
    
-    cover_storage: cover_storage
+    storage: cover_storage
   });
   
   const upload = multer({
@@ -33,19 +33,15 @@ import multer from 'multer';
   });
 
 
-  // const upload_cover = cover_upload.single('coverimage');
+  // const upload_cover = cover_upload.single('coverImage');
 
-  const uploads = upload.array('hotelImage', 8);
+  const uploads = upload.fields([
+    { name: "hotelImage" },
+    { name: "coverImage"},]);
 
-  const uploadroom = upload.array('roomImage', 8);
+  const uploadroom = cover_upload.array('roomImage', 8);
 
-  //  function fileupload(req, res, next) {
-  //   // cover_upload.single('coverImage');
-
-  //     upload.array('hotelImage', 8);
-  //    next();
-
-  // }
+ 
   
   
 
