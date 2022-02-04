@@ -36,6 +36,7 @@ class hotelsController {
     let images = []
     const uploadedImages = req.files
     // console.log('fff')
+    console.log(uploadedImages);
     for (const uploadedImage of uploadedImages){
       images.push(uploadedImage.filename)
     }
@@ -47,8 +48,8 @@ class hotelsController {
     description: req.body.description,
     type: req.body.type,
     address: req.body.address,
-    cover_image: req.file,
-    hotelImage: images
+    hotelImage: images,
+    // coverImage: req.file
     });
 
 hotel.save().then(result => {
