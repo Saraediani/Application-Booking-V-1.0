@@ -9,7 +9,7 @@ import roomSchema from './room-model.js';
 const db = process.env.DATABASE_LOCAL;
 
 mongoose
-  .connect(process.env.DB, {
+  .connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
