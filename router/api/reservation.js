@@ -1,17 +1,15 @@
-import hotelsController from '../../app/controllers/api/hotels-controller.js';
+import reservationController from '../../app/controllers/api/reservation-controller.js';
 import auth from '../../app/middlewares/authentification.js';
-import upload from '../../app/middlewares/upload.js';
 import authorization from '../../app/middlewares/authorization.js';
-
 
 
 export default {
   group: {
-    prefix: '/hotels',
+    prefix: '/reservation',
     middlewares: [
       auth,
       function (req, res, next) {
-        authorization(req, res, next, 'admin', 'owner', 'user');
+        authorization(req, res, next, 'admin', 'owner','user');
       },
     ],
   },
@@ -19,30 +17,30 @@ export default {
     {
       method: 'get',
       path: '/',
-      handler: hotelsController.gethotels,
+      handler: reservationController.getreservations,
     },
     {
       method: 'post',
       path: '/',
-      middlewares: [auth, upload.upload_hotel],
-      handler: hotelsController.createhotel,
+      middlewares: [auth],
+      handler: reservationController.createreservation,
     },
     {
       method: 'get',
       path: '/:id',
-      handler: hotelsController.gethotel,
+      handler: reservationController.getreservation,
     },
     {
       method: 'put',
       path: '/:id',
       middlewares: [auth],
-      handler: hotelsController.updatehotel,
+      handler: reservationController.updatereservation,
     },
     {
       method: 'delete',
       middlewares: [auth],
       path: '/:id',
-      handler: hotelsController.deletehotel,
+      handler: reservationController.deletereservation,
     },
   ],
 };

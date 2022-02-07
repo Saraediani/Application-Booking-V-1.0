@@ -5,18 +5,18 @@ import mongoose from 'mongoose';
 const clientsShema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'user must have a name'],
+    required: [true, 'client must have a name'],
     unique: true,
   },
   email: {
     type: String,
     validate: [validator.isEmail, 'Please enter a valid email'],
-    required: [true, 'user must have a email'],
+    required: [true, 'client must have a email'],
     unique: true,
   },
   password: {
     type: String,
-    required: [true, 'user must have a password'],
+    required: [true, 'client must have a password'],
     minlength: 8,
     select: false,
   },
@@ -35,8 +35,7 @@ const clientsShema = new mongoose.Schema({
   role: {
     type: String,
     required: false,
-    default: 'user',
-    enum: ['user', 'client', 'owner'],
+    default: 'client',
   },
   created_at: {
     type: Date,

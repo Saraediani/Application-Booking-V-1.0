@@ -22,23 +22,20 @@ import multer from 'multer';
     }
   });
 
+  const upload = multer({
+   
+    storage: storage
+  });
   const cover_upload = multer({
    
     storage: cover_storage
   });
   
-  const upload = multer({
-   
-    storage: storage
-  });
 
 
-  // const upload_cover = cover_upload.single('coverImage');
 
-  const uploads = upload.fields([
-    { name: "hotelImage" },
-    { name: "coverImage"},]);
 
+  const upload_hotel = upload.array('hotelImage', 8);
   const uploadroom = cover_upload.array('roomImage', 8);
 
  
@@ -47,8 +44,8 @@ import multer from 'multer';
 
 
 export default {
-  uploads,
-  uploadroom,
+  upload_hotel,
+  uploadroom
 
 };
 

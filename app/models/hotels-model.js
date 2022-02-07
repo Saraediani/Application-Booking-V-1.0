@@ -10,35 +10,35 @@ const hotelsSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: [true, 'hotel must have a description'],
+        // required: [true, 'hotel must have a description'],
     },
     type: {
         type: String,
         // required: [true, 'hotel must have a name']
     },
-    coverImage: {
-        type: String,
-         required: [true, 'hotel must have a cover image']
-    },
+    // coverImage: {
+    //     type: String,
+    //      required: [true, 'hotel must have a cover image']
+    // },
     hotelImage: { 
         type: Array, 
-        // minItems: {
-        //     value: 1,
-        //     message: props => `length of \`${props.path}\` (${props.value.length}) is less than allowed!`
-        // },
-        // maxItems: {
-        //     value: 8,
-        //     message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
-        // },
+        minItems: {
+            value: 1,
+            message: props => `length of \`${props.path}\` (${props.value.length}) is less than allowed!`
+        },
+        maxItems: {
+            value: 8,
+            message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
+        },
         required: [true, 'hotel must have a img'],
        },
     address: {
         type: String,
-        required: [true, 'hotel must have a address']
+        // required: [true, 'hotel must have a address']
     },
     price: {
         type: Number,
-        required: true,
+        // required: true,
     },
     created_at: {
         type: Date,
