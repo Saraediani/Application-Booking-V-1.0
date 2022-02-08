@@ -29,12 +29,8 @@ const roomSchema = new mongoose.Schema({
         },
        },
 
-    status: {
-        type: Boolean,
-        default:false,
-        // required: [true]
-    },
-    price: {
+      
+     price: {
         type: Number,
         // required: true,
     },
@@ -43,5 +39,19 @@ const roomSchema = new mongoose.Schema({
         default: Date.now(),
     },
 });
+
+roomSchema.virtual('rooms', {
+    ref: 'Reservation',
+    localField: '_id',
+    foreignField: 'room_id',
+    justOne: true
+  });
+
+
+  roomSchema.set('toObject', { virtuals: true });
+ roomSchema.set('toJSON', { virtuals: true });
+
+
+ 
 roomSchema.plugin(arrayValidator);
 export default roomSchema;
