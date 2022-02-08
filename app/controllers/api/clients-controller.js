@@ -1,6 +1,7 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
 
+
 class ClientsController {
   async getClient(req, res) {
     try {

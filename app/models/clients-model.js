@@ -22,16 +22,18 @@ const clientsShema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    // validate: [validator.isEmail, 'Please enter a valid email'],
     // required: [true, 'user must have a phone'],
     unique: true,
   },
   adresse: {
     type: String,
-    // validate: [validator.isEmail, 'Please enter a valid email'],
     // required: [true, 'user must have a adress'],
     unique: true,
   },
+  // reservation: [{ 
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Reservation'
+  //  }],
   role: {
     type: String,
     required: false,
@@ -51,6 +53,16 @@ const clientsShema = new mongoose.Schema({
     type: Date,
   },
 });
+
+clientsShema.virtual('clients', {
+  ref: 'Reservation',
+  localField: '_id',
+  foreignField: 'client_id',
+  justOne: true
+});
+
+clientsShema.set('toObject', { virtuals: true });
+clientsShema.set('toJSON', { virtuals: true });
 
 clientsShema.pre('save', async function (next) {
   if (this.isModified('password')) {

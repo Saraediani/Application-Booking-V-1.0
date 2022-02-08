@@ -1,11 +1,10 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
 
-
 class reservationsController {
   async getreservation(req, res){
     try {
-      const reservation = await models.reservations.findById(req.params.id);
+      const reservation = await models.reservations.findById(req.params.id).populate('room_id').populate('clients');
       res.status(202).json({
         status: 'success',
         data: {
@@ -20,7 +19,7 @@ class reservationsController {
   
   async getreservations(req, res) {
     try {
-      const reservations = await models.reservations.find();
+      const reservations = await models.reservations.find().populate('room_id').populate('clients');
       res.status(202).json({
         status: 'success',
         data: {
@@ -33,34 +32,21 @@ class reservationsController {
   }
 
   async createreservation(req, res) {
-  
+    
+    try {
+      const newreservation =  await models.reservations.create(req.body);
 
-  const reservations = models.reservations;
-  const reservation = new reservations({
-    hotel: req.params.hotel,
-    clients: req.body.clients,
-    room: req.body.room,
+      res.status(202).json({
+        status: 'success',
+        data: {
+          reservations: newreservation,
+        },
+      });
+    } catch (err) {
+      throw new AppException(err, 400);
+    }
 
-    });
- 
 
-reservation.save().then(result => {
-    console.log(result);
-    res.status(201).json({
-        message: 'Created reservation successfully',
-        createdreservation: {
-            hotel: result.hotel,
-            clients: result.clients,
-          
-            
-        }
-    });
-}).catch(err => {
-    console.log(err);
-    res.status(500).json({
-        error: err
-    });
-});
   }
 
   async updatereservation(req, res) {
