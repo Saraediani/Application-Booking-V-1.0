@@ -20,7 +20,7 @@ const roomSchema = new mongoose.Schema({
         type: Array, 
         required: [true, 'room must have a img'],
         minItems: {
-            value: 4,
+            value: 1,
             message: props => `length of \`${props.path}\` (${props.value.length}) is less than allowed!`
         },
         maxItems: {
@@ -28,6 +28,11 @@ const roomSchema = new mongoose.Schema({
             message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
         },
        },
+
+
+    status_room:{
+        type: mongoose.Schema.Types.ObjectId,
+    },
 
       
      price: {
@@ -40,7 +45,7 @@ const roomSchema = new mongoose.Schema({
     },
 });
 
-roomSchema.virtual('rooms', {
+roomSchema.virtual('status', {
     ref: 'Reservation',
     localField: '_id',
     foreignField: 'room_id',
@@ -48,10 +53,10 @@ roomSchema.virtual('rooms', {
   });
 
 
-  roomSchema.set('toObject', { virtuals: true });
- roomSchema.set('toJSON', { virtuals: true });
+roomSchema.set('toObject', { virtuals: true });
+roomSchema.set('toJSON', { virtuals: true });
 
 
- 
+
 roomSchema.plugin(arrayValidator);
 export default roomSchema;

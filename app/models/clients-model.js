@@ -10,7 +10,7 @@ const clientsShema = new mongoose.Schema({
   },
   email: {
     type: String,
-    validate: [validator.isEmail, 'Please enter a valid email'],
+    // validate: [validator.isEmail, 'Please enter a valid email'],
     required: [true, 'client must have a email'],
     unique: true,
   },
@@ -20,11 +20,11 @@ const clientsShema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
-  phone: {
-    type: String,
-    // required: [true, 'user must have a phone'],
-    unique: true,
-  },
+  // phone: {
+  //   type: String,
+  //   // required: [true, 'user must have a phone'],
+  //   // unique: true,
+  // },
   adresse: {
     type: String,
     // required: [true, 'user must have a adress'],
