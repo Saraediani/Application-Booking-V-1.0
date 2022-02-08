@@ -22,10 +22,23 @@ const roomsSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    // reserved: [{
+    //     from: String,
+    //     to: String,
+    // }, ],
+
+
     created_at: {
         type: Date,
         default: Date.now(),
     },
-});
+    hotelId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Hotel',
+        required: [true],
+    },
+
+})
+
 
 export default roomsSchema;

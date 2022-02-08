@@ -1,6 +1,6 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
-import path from 'path';
+
 
 
 class hotelsController {
@@ -21,7 +21,11 @@ class hotelsController {
 
     async gethotels(req, res) {
         try {
-            const hotels = await models.hotels.find();
+            const hotels = await models.hotels.find().populate({
+                path: "rooms",
+
+            })
+
             res.status(202).json({
                 status: 'success',
                 data: {
@@ -40,23 +44,7 @@ class hotelsController {
         for (const uploadedImage of uploadedImages) {
             images.push(uploadedImage.filename)
         }
-        // console.log(images);
-        // console.log('result'+ ':' + req.file);
-        // res.send('file uploaded')
-        //  try{ 
-        //    console.log(req.body);
-        //   const newhotels = await models.hotels.create(req.body);
-        //   res.status(202).json({
-        //     status: 'success',
-        //     data: {
-        //       hotels : newhotels,
-        //     },
-        //   });
 
-        // } catch (err) {
-        //   throw new AppException(err, 400);
-        // }
-        // console.log('result'+ ':' + req.file);
         const hotels = models.hotels
         const hotel = new hotels({
             name: req.body.name,
@@ -86,15 +74,12 @@ class hotelsController {
                 error: err
             });
         });
-
-
-
     }
 
     async updatehotel(req, res) {
 
         try {
-            const hotels = await models.hotels.findByIdAndUpdate(
+            const hotels = await models.hotels.findById(
                 req.params.id,
                 req.body, {
                     new: true,
@@ -115,7 +100,7 @@ class hotelsController {
 
     async deletehotel(req, res) {
         try {
-            const hotels = await models.hotels.findByIdAndDelete(req.params.id);
+            const hotels = await models.hotels.findById(req.params.id);
 
             res.status(202).json({
                 status: 'success',

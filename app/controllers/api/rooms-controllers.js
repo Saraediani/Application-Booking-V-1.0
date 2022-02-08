@@ -20,7 +20,7 @@ class roomsController {
 
     async getRooms(req, res) {
         try {
-            const rooms = await models.rooms.find();
+            const rooms = await models.rooms.find().populate("hotels")
             res.status(202).json({
                 status: 'success',
                 data: {
@@ -45,7 +45,8 @@ class roomsController {
             description: req.body.description,
             type: req.body.type,
             number: req.body.number,
-            roomImage: images
+            roomImage: images,
+            hotelId: req.body.hotelId
         });
 
         room.save().then(result => {
@@ -57,7 +58,8 @@ class roomsController {
                     description: result.description,
                     roomImage: result.roomImage,
                     type: result.type,
-                    number: result.number
+                    number: result.number,
+                    hotelId: result.hotelId
                 }
             });
         }).catch(err => {
