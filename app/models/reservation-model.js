@@ -15,28 +15,27 @@ const reservationSchema = new mongoose.Schema({
 
      status: {
         type: String,
-        default: 'available',
+        default: 'active',
         enum: ['pending', 'cancel', 'active', 'available'],
         require: true,
       },
-      date:{
-          type: String,
+
+      date_from:{
+          type: Date,
         require: true,
-      }
+      },
 
-    // room: { 
-    //  type: mongoose.Schema.Types.ObjectId,
-    //  ref: 'rooms',
-    //  required:true
-    // },
-
-    // payment:{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //  ref: 'payment'
-    // },
-
-    // from: Date,
-    // until: Date,
+      date_to:{
+        type: Date,
+      require: true,
+    }
 });
+
+reservationSchema.virtual('rooms', {
+    ref: 'Reservation',
+    localField: '_id',
+    foreignField: 'status_room',
+    justOne: true
+  });
 
 export default reservationSchema;

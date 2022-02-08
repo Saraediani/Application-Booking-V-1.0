@@ -4,7 +4,7 @@ import AppException from '../../exceptions/AppException.js';
 class reservationsController {
   async getreservation(req, res){
     try {
-      const reservation = await models.reservations.findById(req.params.id).populate('room_id').populate('clients');
+      const reservation = await models.reservations.findById(req.params.id).populate('room_id').populate('client_id');
       res.status(202).json({
         status: 'success',
         data: {
@@ -19,7 +19,7 @@ class reservationsController {
   
   async getreservations(req, res) {
     try {
-      const reservations = await models.reservations.find().populate('room_id').populate('clients');
+      const reservations = await models.reservations.find().populate('room_id').populate('client_id');
       res.status(202).json({
         status: 'success',
         data: {
