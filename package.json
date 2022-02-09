@@ -1,0 +1,38 @@
+{
+    "name": "booking-api",
+    "version": "1.0.0",
+    "description": "👉 A resful api that allows users to login as administrator or user (user / owner).",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "build": "babel app.js -d dist",
+        "start": "npm run build && nodemon app.js"
+    },
+    "author": "SARA'H",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.1",
+        "dotenv": "^11.0.0",
+        "express": "^4.17.2",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.13.14",
+        "mongoose-array-validator": "^1.0.3",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.4",
+        "validator": "^13.7.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.16.8",
+        "@babel/core": "^7.16.12",
+        "@babel/preset-env": "^7.16.8",
+        "eslint": "^8.6.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.28.0",
+        "prettier": "^2.5.1"
+    }
+}
