@@ -1,63 +1,48 @@
 import mongoose from 'mongoose';
-import arrayValidator from 'mongoose-array-validator'
 
-
-const roomSchema = new mongoose.Schema({
+const roomsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'room must have a name'],
+        required: [true, 'user must have a name'],
         unique: true,
     },
     description: {
         type: String,
-        // required: [true, 'room must have a description'],
+        required: [true, 'user must have a name'],
     },
     type: {
         type: String,
-        // required: [true, 'room must have a type']
+        required: [true, 'user must have a name']
     },
-    roomImage: { 
-        type: Array, 
+    roomImage: {
+        type: Array,
         required: [true, 'room must have a img'],
-        minItems: {
-            value: 1,
-            message: props => `length of \`${props.path}\` (${props.value.length}) is less than allowed!`
-        },
-        maxItems: {
-            value: 8,
-            message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
-        },
-       },
-
-
-    status_room:{
-        type: mongoose.Schema.Types.ObjectId,
-        // default: 'available',
     },
-
-      
-     price: {
+    number: {
         type: Number,
-        // required: true,
+        required: true,
     },
+    price: {
+        type: Number,
+        required: true,
+    },
+    // reserved: [{
+    //     from: String,
+    //     to: String,
+    // }, ],
+
+
     created_at: {
         type: Date,
         default: Date.now(),
     },
-});
+    hotelId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Hotel',
+        required: [true],
+    },
 
-roomSchema.virtual('status', {
-    ref: 'Reservation',
-    localField: '_id',
-    foreignField: 'room_id',
-    justOne: true
-  });
-
-
-roomSchema.set('toObject', { virtuals: true });
-roomSchema.set('toJSON', { virtuals: true });
+})
 
 
-
-roomSchema.plugin(arrayValidator);
-export default roomSchema;
+export default roomsSchema;
