@@ -7,10 +7,10 @@ const paymentSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
-    card_number:{
-        type: 'string',
-        required: true
-    },
+    // card_number:{
+    //     type: 'string',
+    //     required: true
+    // },
     expiration_date:{
         type: Date,
         required: true
