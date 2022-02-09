@@ -23,7 +23,7 @@ class roomsController {
             let filter = {}
             if (req.query.name) filter.name = req.query.name;
             if (req.query.type) filter.type = req.query.type;
-            const rooms = await models.rooms.find(filter).populate("hotels")
+            const rooms = await models.rooms.find(filter).populate("hotels").populate('status', 'status')
             res.status(202).json({
                 status: 'success',
                 data: {
