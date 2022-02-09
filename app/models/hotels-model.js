@@ -31,7 +31,7 @@ const hotelsSchema = new mongoose.Schema({
             message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
         },
         required: [true, 'hotel must have a img'],
-       },
+    },
     address: {
         type: String,
         // required: [true, 'hotel must have a address']
@@ -52,4 +52,13 @@ hotelsSchema.virtual('reservation', {
     justOne: true
   });
 hotelsSchema.plugin(arrayValidator);
+
+hotelsSchema.virtual("rooms", {
+        ref: "rooms",
+        localField: "_id",
+        foreignField: "hotelId",
+    }),
+
+    hotelsSchema.set("toObject", { virtuals: true })
+hotelsSchema.set("toJSON", { virtuals: true })
 export default hotelsSchema;
