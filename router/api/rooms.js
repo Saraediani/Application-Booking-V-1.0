@@ -1,4 +1,4 @@
-import roomsController from '../../app/controllers/api/room-controller.js';
+import roomsController from '../../app/controllers/api/rooms-controller.js';
 import auth from '../../app/middlewares/authentification.js';
 import upload  from '../../app/middlewares/upload.js';
 import authorization from '../../app/middlewares/authorization.js';
@@ -18,7 +18,7 @@ export default {
     {
       method: 'get',
       path: '/',
-      handler: roomsController.getrooms,
+      handler: roomsController.getRooms,
     },
     {
       method: 'post',
@@ -29,13 +29,13 @@ export default {
     {
       method: 'get',
       path: '/:id',
-      handler: roomsController.getroom,
+      handler: roomsController.getRoom,
     },
     {
       method: 'put',
       path: '/:id',
       middlewares: [auth],
-      handler: roomsController.updateroom,
+      handler: roomsController.updateRoom,
     },
     {
       method: 'delete',

@@ -44,6 +44,12 @@ const roomSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
+    hotelId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Hotel',
+        required: [true],
+    },
+
 });
 
 roomSchema.virtual('status', {
