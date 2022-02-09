@@ -1,15 +1,29 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
 
-
-class ClientsController {
-  async getClient(req, res) {
+class reservationsController {
+  async getreservation(req, res){
     try {
-      const clients = await models.clients.findById(req.params.id);
+      const reservation = await models.reservations.findById(req.params.id).populate('room_id').populate('client_id');
       res.status(202).json({
         status: 'success',
         data: {
-          clients,
+          reservation,
+        },
+      });
+    } catch (err) {
+      throw new AppException(err, 400);
+    }
+  }
+ 
+  
+  async getreservations(req, res) {
+    try {
+      const reservations = await models.reservations.find().populate('room_id').populate('client_id');
+      res.status(202).json({
+        status: 'success',
+        data: {
+          reservations,
         },
       });
     } catch (err) {
@@ -17,37 +31,28 @@ class ClientsController {
     }
   }
 
-  async getClients(req, res) {
+  async createreservation(req, res) {
+    
     try {
-      const clients = await models.clients.find();
+      const newreservation =  await models.reservations.create(req.body);
+
       res.status(202).json({
         status: 'success',
         data: {
-            clients,
+          reservations: newreservation,
         },
       });
     } catch (err) {
       throw new AppException(err, 400);
     }
+
+
   }
 
-  async createClient(req, res) {
-    try {
-      const newClient = await models.clients.create(req.body);
-      res.status(202).json({
-        status: 'success',
-        data: {
-          client : newClient,
-        },
-      });
-    } catch (err) {
-      throw new AppException(err, 400);
-    }
-  }
+  async updatereservation(req, res) {
 
-  async updateClient(req, res) {
     try {
-      const clients = await models.clients.findByIdAndUpdate(
+      const reservations = await models.reservations.findByIdAndUpdate(
         req.params.id,
         req.body,
         {
@@ -59,7 +64,7 @@ class ClientsController {
       res.status(202).json({
         status: 'success',
         data: {
-          clients,
+          reservations,
         },
       });
     } catch (err) {
@@ -67,14 +72,14 @@ class ClientsController {
     }
   }
 
-  async deleteClient(req, res) {
+  async deletereservation(req, res) {
     try {
-      const clients = await models.clients.findByIdAndDelete(req.params.id);
+      const reservations = await models.reservations.findByIdAndDelete(req.params.id);
 
       res.status(202).json({
         status: 'success',
         data: {
-          clients,
+          reservations,
         },
       });
     } catch (err) {
@@ -83,4 +88,4 @@ class ClientsController {
   }
 }
 
-export default new ClientsController();
+export default new reservationsController();

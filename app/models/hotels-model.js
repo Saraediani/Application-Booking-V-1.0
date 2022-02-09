@@ -1,27 +1,47 @@
 import mongoose from 'mongoose';
+import arrayValidator from 'mongoose-array-validator'
+
 
 const hotelsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'user must have a name'],
+        required: [true, 'hotel must have a name'],
         unique: true,
     },
     description: {
         type: String,
-        required: [true, 'user must have a name'],
+        // required: [true, 'hotel must have a description'],
     },
     type: {
         type: String,
-        required: [true, 'user must have a name']
+        // required: [true, 'hotel must have a name']
     },
+
+
+
     hotelImage: {
         type: Array,
+        minItems: {
+            value: 1,
+            message: props => `length of \`${props.path}\` (${props.value.length}) is less than allowed!`
+        },
+        maxItems: {
+            value: 8,
+            message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
+        },
+
         required: [true, 'hotel must have a img'],
     },
     address: {
         type: String,
-        required: [true, 'user must have a name']
+        // required: [true, 'hotel must have a address']
     },
+
+    price: {
+        type: Number,
+        // required: true,
+    },
+
     created_at: {
         type: Date,
         default: Date.now(),
@@ -34,6 +54,15 @@ hotelsSchema.virtual("rooms", {
         foreignField: "hotelId",
     }),
 
-    hotelsSchema.set("toObject", { virtuals: true })
-hotelsSchema.set("toJSON", { virtuals: true })
+    hotelsSchema.set("toObject", { virtuals: true });
+hotelsSchema.set("toJSON", { virtuals: true });
+
+hotelsSchema.virtual('reservation', {
+    ref: 'Reservation',
+    localField: '_id',
+    foreignField: 'hotel',
+    justOne: true
+});
+
+hotelsSchema.plugin(arrayValidator);
 export default hotelsSchema;

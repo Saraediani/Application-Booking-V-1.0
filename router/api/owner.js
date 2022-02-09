@@ -8,7 +8,7 @@ export default {
     middlewares: [
       auth,
       function (req, res, next) {
-        authrization(req, res, next, 'admin', 'owner');
+        authrization(req, res, next, 'admin');
       },
     ],
   },
