@@ -32,6 +32,7 @@ const roomSchema = new mongoose.Schema({
 
     status_room:{
         type: mongoose.Schema.Types.ObjectId,
+        // default: 'available',
     },
 
       
