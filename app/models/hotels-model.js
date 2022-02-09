@@ -22,10 +22,6 @@ const hotelsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'user must have a name']
     },
-    price: {
-        type: Number,
-        required: true,
-    },
     created_at: {
         type: Date,
         default: Date.now(),

@@ -21,7 +21,10 @@ class hotelsController {
 
     async gethotels(req, res) {
         try {
-            const hotels = await models.hotels.find().populate({
+            let filter = {};
+            if (req.query.city) filter.address = req.query.city;
+            if (req.query.name) filter.name = req.query.name;
+            const hotels = await models.hotels.find(filter).populate({
                 path: "rooms",
 
             })
@@ -37,18 +40,19 @@ class hotelsController {
         }
     }
 
+
+
     async createhotel(req, res) {
         let images = []
         const uploadedImages = req.files
-            // console.log(uploadedImages);
         for (const uploadedImage of uploadedImages) {
             images.push(uploadedImage.filename)
         }
 
         const hotels = models.hotels
         const hotel = new hotels({
+
             name: req.body.name,
-            price: req.body.price,
             description: req.body.description,
             type: req.body.type,
             address: req.body.address,
@@ -56,12 +60,11 @@ class hotelsController {
         });
 
         hotel.save().then(result => {
-            // console.log(result);
             res.status(201).json({
+
                 message: 'Created hotel successfully',
                 createdhotel: {
                     name: result.name,
-                    price: result.price,
                     description: result.description,
                     hotelImage: result.hotelImage,
                     type: result.type,
@@ -69,7 +72,6 @@ class hotelsController {
                 }
             });
         }).catch(err => {
-            // console.log(err);
             res.status(500).json({
                 error: err
             });

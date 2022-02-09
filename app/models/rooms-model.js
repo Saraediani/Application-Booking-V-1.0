@@ -22,6 +22,10 @@ const roomsSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    price: {
+        type: Number,
+        required: true,
+    },
     // reserved: [{
     //     from: String,
     //     to: String,
