@@ -41,8 +41,21 @@ const roomsSchema = new mongoose.Schema({
         ref: 'Hotel',
         required: [true],
     },
+});
+
+roomsSchema.virtual('status', {
+    ref: 'Reservation',
+    localField: '_id',
+    foreignField: 'room_id',
+    justOne: true
+  });
+
+
+roomsSchema.set('toObject', { virtuals: true });
+roomsSchema.set('toJSON', { virtuals: true });
 
 })
 
 
+roomsSchema.plugin(arrayValidator);
 export default roomsSchema;
