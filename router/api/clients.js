@@ -1,6 +1,6 @@
 import ClientsController from '../../app/controllers/api/clients-controller.js';
 import auth from '../../app/middlewares/authentification.js';
-import authorization from '../../app/middlewares/authorization.js';
+import authrization from '../../app/middlewares/authorization.js';
 
 export default {
   group: {
@@ -8,7 +8,7 @@ export default {
     middlewares: [
       auth,
       function (req, res, next) {
-        authorization(req, res, next, 'admin', 'user', 'client');
+        authrization(req, res, next, 'admin', 'user', 'client');
       },
     ],
   },
