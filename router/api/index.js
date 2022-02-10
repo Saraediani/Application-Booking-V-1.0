@@ -4,4 +4,5 @@ import hotelsRoutes from './hotels.js';
 import roomsRoutes from './rooms.js';
 import ownersRoutes from './owner.js'
 import clientsRoutes from './clients.js';
-export default [usersRoutes, authRoutes, hotelsRoutes, roomsRoutes, ownersRoutes, clientsRoutes];
+import paymentRoutes from './payment.js';
+export default [paymentRoutes, usersRoutes, authRoutes, hotelsRoutes, ownersRoutes, clientsRoutes, roomsRoutes, reservationsRoutes];

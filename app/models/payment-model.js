@@ -4,17 +4,29 @@ import mongoose from 'mongoose';
 const paymentSchema = new mongoose.Schema({
     name: { 
         type: 'string',
+        required:true,
      },
          
     card_number: { 
-    type: 'string',
+    type: Number,
+    required:true,
+
     
      },  
 
       date:{
-        type: Date,
-        default: Date.now()
+        type: 'string',
+      
+        required:true,
+
       },
+      CVV:{
+       type: Number,
+       required:true,
+
+       
+      },
+
 
 });
 
