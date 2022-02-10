@@ -3,7 +3,7 @@ import AppException from '../../exceptions/AppException.js';
 
 
 class roomsController {
-  async getroom(req, res){
+  async getRoom(req, res){
     try {
       const room = await models.rooms.findById(req.params.id).populate('status', 'status');
       res.status(202).json({
@@ -18,9 +18,12 @@ class roomsController {
   }
  
 
-  async getrooms(req, res) {
+  async getRooms(req, res) {
     try {
-      const rooms = await models.rooms.find().populate('status', 'status');
+      let filter = {}
+      if (req.query.name) filter.name = req.query.name;
+      if (req.query.type) filter.type = req.query.type;
+      const rooms = await models.rooms.find(filter).populate('status', 'status').populate("hotels");
       res.status(202).json({
         status: 'success',
         data: {
@@ -32,7 +35,7 @@ class roomsController {
     }
   }
 
-  async createroom(req, res) {
+  async createRoom(req, res) {
     let images = []
     const uploadedImages = req.files
     for (const uploadedImage of uploadedImages){
@@ -46,7 +49,8 @@ class roomsController {
     type: req.body.type,
     price: req.body.price,
     status: req.body.status,
-    roomImage: images
+    roomImage: images,
+     hotelId: req.body.hotelId
 
     });
  
@@ -61,6 +65,8 @@ room.save().then(result => {
             description: result.description,
             roomImage: result.roomImage,
             type: result.type,
+            number: result.number,
+            hotelId: result.hotelId
             
         }
     });
@@ -72,7 +78,7 @@ room.save().then(result => {
 });
   }
 
-  async updateroom(req, res) {
+  async updateRoom(req, res) {
 
     try {
       const rooms = await models.rooms.findByIdAndUpdate(

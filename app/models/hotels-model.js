@@ -16,10 +16,7 @@ const hotelsSchema = new mongoose.Schema({
         type: String,
         // required: [true, 'hotel must have a name']
     },
-    // coverImage: {
-    //     type: String,
-    //      required: [true, 'hotel must have a cover image']
-    // },
+
     hotelImage: { 
         type: Array, 
         minItems: {
@@ -32,24 +29,39 @@ const hotelsSchema = new mongoose.Schema({
         },
         required: [true, 'hotel must have a img'],
        },
+
     address: {
         type: String,
         // required: [true, 'hotel must have a address']
     },
+
     price: {
         type: Number,
         // required: true,
     },
+    
     created_at: {
         type: Date,
         default: Date.now(),
     },
 });
+
 hotelsSchema.virtual('reservation', {
     ref: 'Reservation',
     localField: '_id',
     foreignField: 'hotel',
     justOne: true
   });
+
+  hotelsSchema.virtual("rooms", {
+    ref: "rooms",
+    localField: "_id",
+    foreignField: "hotelId",
+}),
+
+hotelsSchema.set("toObject", { virtuals: true })
+hotelsSchema.set("toJSON", { virtuals: true })
+
 hotelsSchema.plugin(arrayValidator);
+
 export default hotelsSchema;

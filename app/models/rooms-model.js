@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import arrayValidator from 'mongoose-array-validator'
 
 
-const roomSchema = new mongoose.Schema({
+const roomsSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'room must have a name'],
@@ -32,6 +32,7 @@ const roomSchema = new mongoose.Schema({
 
     status_room:{
         type: mongoose.Schema.Types.ObjectId,
+        // default: 'available',
     },
 
       
@@ -43,9 +44,14 @@ const roomSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
+    hotelId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Hotel',
+        required: [true],
+    },
 });
 
-roomSchema.virtual('status', {
+roomsSchema.virtual('status', {
     ref: 'Reservation',
     localField: '_id',
     foreignField: 'room_id',
@@ -53,10 +59,10 @@ roomSchema.virtual('status', {
   });
 
 
-roomSchema.set('toObject', { virtuals: true });
-roomSchema.set('toJSON', { virtuals: true });
+roomsSchema.set('toObject', { virtuals: true });
+roomsSchema.set('toJSON', { virtuals: true });
 
 
 
-roomSchema.plugin(arrayValidator);
-export default roomSchema;
+roomsSchema.plugin(arrayValidator);
+export default roomsSchema;
