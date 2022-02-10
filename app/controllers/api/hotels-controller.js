@@ -21,8 +21,8 @@ class hotelsController {
   async gethotels(req, res) {
     try {
       let filter = {};
-            if (req.query.city) filter.address = req.query.city;
-            if (req.query.name) filter.name = req.query.name;
+      if (req.query.city) filter.address = req.query.city;
+      if (req.query.name) filter.name = req.query.name;
       const hotels = await models.hotels.find(filter).populate({
         path: "rooms",
 

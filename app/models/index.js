@@ -5,6 +5,8 @@ import ownerShema from './owner.js';
 import reservationSchema from './reservation-model.js';
 import clientsShema from './clients-model.js';
 import roomsSchema from './rooms-model.js';
+import paymentSchema from './payment-model.js';
+import paymentMethodSchema from './method_payment.js'
 
 
 
@@ -35,6 +37,10 @@ models.users = mongoose.model('Users', usersShema);
 models.owners = mongoose.model('owners', ownerShema);
 
 models.clients = mongoose.model('Clients', clientsShema);
+
+models.payment = mongoose.model('payment', paymentSchema);
+
+models.methodpayment = mongoose.model('method_payment', paymentMethodSchema);
 
 
 

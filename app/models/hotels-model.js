@@ -63,4 +63,5 @@ hotelsSchema.set("toObject", { virtuals: true })
 hotelsSchema.set("toJSON", { virtuals: true })
 
 hotelsSchema.plugin(arrayValidator);
+
 export default hotelsSchema;
