@@ -5,7 +5,7 @@ import authorization from '../../app/middlewares/authorization.js';
 
 export default {
   group: {
-    prefix: '/',
+    prefix: '/payment',
     middlewares: [
       auth,
       function (req, res, next) {
@@ -16,18 +16,18 @@ export default {
   routes: [
     {
       method: 'get',
-      path: '/payment',
+      path: '/',
       handler: paymentController.getpayments,
     },
     {
       method: 'post',
-      path: '/method',
+      path: '/',
       middlewares: [auth],
       handler: paymentController.createpayment,
     },
     {
-      method: 'get',
-      path: '/:id',
+      method: 'post',
+      path: '/',
       handler: paymentController.method,
     },
     // {

@@ -1,4 +1,4 @@
-import roomsController from '../../app/controllers/api/room-controller.js';
+import roomsController from '../../app/controllers/api/rooms-controller.js';
 import auth from '../../app/middlewares/authentification.js';
 import upload  from '../../app/middlewares/upload.js';
 import authorization from '../../app/middlewares/authorization.js';
