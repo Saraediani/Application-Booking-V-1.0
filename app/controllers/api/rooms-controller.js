@@ -5,7 +5,7 @@ import AppException from '../../exceptions/AppException.js';
 class roomsController {
   async getroom(req, res){
     try {
-      const room = await models.rooms.findById(req.params.id).populate('status', 'status');
+      const room = await models.rooms.findById(req.params.id).populate("reservation", "status");
       res.status(202).json({
         status: 'success',
         data: {
@@ -20,18 +20,24 @@ class roomsController {
 
   async getrooms(req, res) {
     try {
+
       let filter = {}
       if (req.query.name) filter.name = req.query.name;
       if (req.query.type) filter.type = req.query.type;
-      const rooms = await models.rooms.find(filter).populate('status', 'status').populate("hotels");
-      res.status(202).json({
+
+      // if (req.query.date_from && req.query.status === 'null') filter.date_from = req.query.date_from;
+      // if (req.query.date_to && req.query.status === 'null') filter.date_to = req.query.date_to;
+      const rooms = await models.rooms.find(filter).populate("reservation", "status");
+      let x = rooms.status;
+      console.log(x);
+    res.status(202).json({
         status: 'success',
         data: {
           rooms,
         },
       });
     } catch (err) {
-      throw new AppException(err, 400);
+      throw new AppException(err, 400); 
     }
   }
 
@@ -48,9 +54,11 @@ class roomsController {
     description: req.body.description,
     type: req.body.type,
     price: req.body.price,
-    status: req.body.status,
+    status_room: req.body.status_room,
     roomImage: images,
-     hotelId: req.body.hotelId
+    hotelId: req.body.hotelId,
+    date_to: req.body.date_to,
+    date_from: req.body.date_from,
 
     });
  

@@ -5,7 +5,10 @@ import AppException from '../../exceptions/AppException.js';
 class hotelsController {
   async gethotel(req, res){
     try {
-      const hotel = await models.hotels.findById(req.params.id);
+      const hotel = await models.hotels.findById(req.params.id).populate({
+        path: "rooms",
+
+    });
       res.status(202).json({
         status: 'success',
         data: {

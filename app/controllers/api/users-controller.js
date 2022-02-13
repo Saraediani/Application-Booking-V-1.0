@@ -66,6 +66,34 @@ class UsersController {
     }
   }
 
+  // async updateprofile(req, res) {
+  //   try {
+
+  //     let session = req.session
+
+  //     let(session._id){
+
+  //       const users = await models.users.findByIdAndUpdate(condition,
+  //         req.body,
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  //     }
+  //     res.status(202).json({
+  //       status: 'success',
+  //       data: {
+  //         users,
+  //       },
+  //     });
+  //   } catch (err) {
+  //     throw new AppException(err, 400);
+  //   }
+
+
+  // }
+
   async deleteUser(req, res) {
     try {
       const users = await models.users.findByIdAndDelete(req.params.id);

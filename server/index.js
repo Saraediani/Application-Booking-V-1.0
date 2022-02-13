@@ -8,7 +8,7 @@ import path  from 'path';
 class Server {
   constructor() {
     this.router = Router;
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || 4000;
     this.app = express();
   }
 

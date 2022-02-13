@@ -38,5 +38,10 @@ export default {
       path: '/:id',
       handler: UsersController.deleteUser,
     },
+    {
+      method: 'post',
+      path: '/profil/:id',
+      handler: UsersController.updateprofile,
+    },
   ],
 };

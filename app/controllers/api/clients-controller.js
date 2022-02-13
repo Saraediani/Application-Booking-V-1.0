@@ -3,6 +3,7 @@ import AppException from '../../exceptions/AppException.js';
 
 
 class ClientsController {
+  
   async getClient(req, res) {
     try {
       const clients = await models.clients.findById(req.params.id);

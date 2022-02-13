@@ -3,18 +3,23 @@ import mongoose from 'mongoose';
 const paymentMethodSchema = new mongoose.Schema({
 
     title:{
-        type: 'string',
-        default: 'null',
-        enum: ['paypal', 'creditcard', 'stripe', 'null']
+        type: String,
+        enum: ['paypal', 'creditcard', 'stripe'],
+        required: [true, 'must choose a payment method']
     },
 
     
-    payment_method: { 
-        type: mongoose.Schema.Types.ObjectId,
-         ref: 'payment',
-       
-     },
+
          
 });
+
+paymentMethodSchema.virtual('method', {
+    ref: 'payment',
+    localField: '_id',
+    foreignField: 'payment_method',
+    justOne: true
+  });
+
+
 
 export default paymentMethodSchema

@@ -2,22 +2,28 @@ import mongoose from 'mongoose';
 
 const reservationSchema = new mongoose.Schema({
     room_id: { 
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
          ref: 'rooms',
-        //  required:true
+      
      },
          
     client_id: { 
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: 'Clients',
-    // required:true
+    
      },  
 
      status: {
-        type: String,
-        default: 'booked',
-        enum: ['booked', 'available'],
-        require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'rooms',
+      default: 'booked',
+      enum: ['booked', 'available'],
+    },
+
+      payments: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'payment'
+
       },
 
       date_from:{
@@ -31,11 +37,14 @@ const reservationSchema = new mongoose.Schema({
     }
 });
 
-reservationSchema.virtual('rooms', {
-    ref: 'Reservation',
-    localField: '_id',
-    foreignField: 'status_room',
-    justOne: true
-  });
+// reservationSchema.virtual('statu', {
+//   ref: 'rooms',
+//   localField: 'status',
+//   foreignField: '_id',
+//   justOne: true
+// });
+
+
+
 
 export default reservationSchema;

@@ -29,17 +29,12 @@ const roomsSchema = new mongoose.Schema({
         },
        },
 
-
-    status_room:{
-        type: mongoose.Schema.Types.ObjectId,
-        // default: 'available',
-    },
-
       
      price: {
         type: Number,
         // required: true,
     },
+
     created_at: {
         type: Date,
         default: Date.now(),
@@ -47,18 +42,27 @@ const roomsSchema = new mongoose.Schema({
 
     hotelId: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Hotel',
+        ref: 'hotel',
         required: [true],
     },
+
+    created_at: {
+        type: Date,
+        default: Date.now(),
+      },
+
 });
 
-roomsSchema.virtual('status', {
+
+
+
+
+  roomsSchema.virtual('reservation', {
     ref: 'Reservation',
     localField: '_id',
     foreignField: 'room_id',
     justOne: true
   });
-
 
 roomsSchema.set('toObject', { virtuals: true });
 roomsSchema.set('toJSON', { virtuals: true });
