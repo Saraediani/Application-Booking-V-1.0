@@ -24,6 +24,7 @@ class roomsController {
             let filter = {}
             if (req.query.name) filter.name = req.query.name;
             if (req.query.type) filter.type = req.query.type;
+            if (req.query.price) filter.price = req.query.price;
 
             // if (req.query.date_from) filter.date_from = req.query.date_from;
             // if (req.query.date_to) filter.date_to = req.query.date_to;

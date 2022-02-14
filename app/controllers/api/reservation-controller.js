@@ -16,9 +16,40 @@ class reservationsController {
         }
     }
 
+    async getavailableRooms(req, res) {
+
+        try {
+            const { from, to } = req.query;
+            const filter = {
+                $or: [{
+                        $and: [{
+                            date_from: { $lte: from },
+                            date_to: { $gt: from },
+                        }, ],
+                    },
+                    { date_from: { $gt: from, $lte: to } },
+                ],
+            };
+            const reservations = await models.reservations.find(filter, { _id: 1 }).populate(
+                "room_id",
+                "room_id"
+            );
+            // return res.send(reservations)
+            const reservedRooms = reservations.map((reservation) => {
+                return reservation.room_id.id;
+            });
+            const rooms = await models.rooms.find({ _id: { $nin: reservedRooms } });
+            const count = await models.rooms.countDocuments({ _id: { $nin: reservedRooms } });
+
+            return res.json({ count: count, rooms: rooms });
+        } catch (error) {
+            throw new AppException(err, 400);
+        }
+    }
 
     async getreservations(req, res) {
         try {
+
             const reservations = await models.reservations.find().populate('room_id').populate('client_id').populate('payment');
             res.status(202).json({
                 status: 'success',
