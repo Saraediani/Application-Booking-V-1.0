@@ -25,11 +25,10 @@ class roomsController {
       if (req.query.name) filter.name = req.query.name;
       if (req.query.type) filter.type = req.query.type;
 
-      // if (req.query.date_from && req.query.status === 'null') filter.date_from = req.query.date_from;
-      // if (req.query.date_to && req.query.status === 'null') filter.date_to = req.query.date_to;
-      const rooms = await models.rooms.find(filter).populate("reservation", "status");
-      let x = rooms.status;
-      console.log(x);
+      // if (req.query.date_from) filter.date_from = req.query.date_from;
+      // if (req.query.date_to) filter.date_to = req.query.date_to;
+      const rooms = await models.rooms.find(filter).populate("reservation");
+    
     res.status(202).json({
         status: 'success',
         data: {

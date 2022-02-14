@@ -30,17 +30,5 @@ export default {
       path: '/method',
       handler: paymentController.method,
     },
-    // {
-    //   method: 'put',
-    //   path: '/:id',
-    //   middlewares: [auth],
-    //   handler: paymentController.updatepayment,
-    // },
-    // {
-    //   method: 'delete',
-    //   middlewares: [auth],
-    //   path: '/:id',
-    //   handler: paymentController.deletepayment,
-    // },
   ],
 };
