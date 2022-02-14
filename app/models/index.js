@@ -10,18 +10,17 @@ import paymentMethodSchema from './method_payment.js'
 
 
 
-const db = process.env.DATABASE_LOCAL;
 
 mongoose
-  .connect(process.env.DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log('connection 👌');
-  });
+    .connect(process.env.DATABASE_LOCAL, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    })
+    .then(() => {
+        console.log('connection 👌');
+    });
 
 const models = {};
 
