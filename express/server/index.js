@@ -2,6 +2,7 @@ import express from 'express';
 import 'dotenv/config';
 import Router from '../router/index.js';
 import path from 'path';
+import cors from 'cors'
 
 
 
@@ -13,6 +14,7 @@ class Server {
     }
 
     start() {
+        this.app.use(cors())
         this._setupRoutes();
         this._listen();
 

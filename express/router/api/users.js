@@ -4,13 +4,7 @@ import authrization from '../../app/middlewares/authorization.js';
 
 export default {
   group: {
-    prefix: '/users',
-    middlewares: [
-      auth,
-      function (req, res, next) {
-        authrization(req, res, next, 'admin', 'user');
-      },
-    ],
+    prefix: '/users'
   },
   routes: [
     {
