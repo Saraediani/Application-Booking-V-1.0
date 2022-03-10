@@ -23,7 +23,7 @@ const Signup = () => {
           console.log(response.data.accessToken);
           localStorage.setItem("name", JSON.stringify(response.data.accessToken))
       
-          // window.location = "/" 
+          window.location = "/" 
           } catch (error) {
           if (error.response &&
             error.response.status >= 400 &&
