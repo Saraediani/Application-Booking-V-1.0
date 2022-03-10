@@ -26,27 +26,27 @@ const usersShema = new mongoose.Schema({
     default: 'user',
     enum: ['user', 'admin', 'owner', 'client'],
 
-  },
-  created_at: {
-    type: Date,
-    default: Date.now(),
-  },
-  passwordChangedAt: {
-    type: Date,
-  },
-  passwordResetToken: {
-    type: String,
-  },
-  passwordResetExpires: {
-    type: Date,
-  },
+    },
+    created_at: {
+        type: Date,
+        default: Date.now(),
+    },
+    passwordChangedAt: {
+        type: Date,
+    },
+    passwordResetToken: {
+        type: String,
+    },
+    passwordResetExpires: {
+        type: Date,
+    },
 });
 
-usersShema.pre('save', async function (next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 12);
-    next();
-  }
+usersShema.pre('save', async function(next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 12);
+        next();
+    }
 });
 
 export default usersShema;

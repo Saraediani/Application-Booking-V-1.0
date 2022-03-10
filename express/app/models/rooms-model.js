@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import arrayValidator from 'mongoose-array-validator'
 
-
 const roomsSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -16,8 +15,8 @@ const roomsSchema = new mongoose.Schema({
         type: String,
         // required: [true, 'room must have a type']
     },
-    roomImage: { 
-        type: Array, 
+    roomImage: {
+        type: Array,
         required: [true, 'room must have a img'],
         minItems: {
             value: 1,
@@ -27,7 +26,7 @@ const roomsSchema = new mongoose.Schema({
             value: 8,
             message: props => `length of \`${props.path}\` (${props.value.length}) is more than allowed!`
         },
-       },
+    },
 
       
      price: {
@@ -39,7 +38,6 @@ const roomsSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
-
     hotelId: {
         type: mongoose.Schema.ObjectId,
         ref: 'hotel',
@@ -62,7 +60,7 @@ const roomsSchema = new mongoose.Schema({
     localField: '_id',
     foreignField: 'room_id',
     justOne: true
-  });
+});
 
 roomsSchema.set('toObject', { virtuals: true });
 roomsSchema.set('toJSON', { virtuals: true });

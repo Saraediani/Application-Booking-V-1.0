@@ -18,7 +18,7 @@ export default {
     {
       method: 'get',
       path: '/',
-      handler: roomsController.getrooms,
+      handler: roomsController.getRooms,
     },
     {
       method: 'post',
@@ -29,13 +29,13 @@ export default {
     {
       method: 'get',
       path: '/:id',
-      handler: roomsController.getroom,
+      handler: roomsController.getRoom,
     },
     {
       method: 'put',
       path: '/:id',
       middlewares: [auth],
-      handler: roomsController.updateroom,
+      handler: roomsController.updateRoom,
     },
     {
       method: 'delete',

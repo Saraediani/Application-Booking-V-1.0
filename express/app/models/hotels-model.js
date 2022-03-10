@@ -43,14 +43,12 @@ const hotelsSchema = new mongoose.Schema({
     },
 });
 
-
 hotelsSchema.virtual('reservation', {
     ref: 'Reservation',
     localField: '_id',
     foreignField: 'hotel',
     justOne: true
 });
-
 
 hotelsSchema.virtual("rooms", {
         ref: "rooms",
