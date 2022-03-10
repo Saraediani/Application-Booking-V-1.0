@@ -1,4 +1,4 @@
-aimport models from '../../models/index.js';
+import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
 
 
@@ -39,6 +39,7 @@ class hotelsController {
     } catch (err) {
       throw new AppException(err, 400);
     }
+}
 
 
     async gethotels(req, res) {
