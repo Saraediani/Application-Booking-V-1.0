@@ -3,19 +3,43 @@ import AppException from '../../exceptions/AppException.js';
 
 
 class hotelsController {
-    async gethotel(req, res) {
-        try {
-            const hotel = await models.hotels.findById(req.params.id);
-            res.status(202).json({
-                status: 'success',
-                data: {
-                    hotel,
-                },
-            });
-        } catch (err) {
-            throw new AppException(err, 400);
-        }
+  async gethotel(req, res){
+    try {
+      const hotel = await models.hotels.findById(req.params.id).populate({
+        path: "rooms",
+
+    });
+      res.status(202).json({
+        status: 'success',
+        data: {
+          hotel,
+        },
+      });
+    } catch (err) {
+      throw new AppException(err, 400);
     }
+  }
+ 
+  
+  async gethotels(req, res) {
+    try {
+      let filter = {};
+      if (req.query.city) filter.address = req.query.city;
+      if (req.query.name) filter.name = req.query.name;
+      const hotels = await models.hotels.find(filter).populate({
+        path: "rooms",
+
+    });
+      res.status(202).json({
+        status: 'success',
+        data: {
+          hotels,
+        },
+      });
+    } catch (err) {
+      throw new AppException(err, 400);
+    }
+}
 
 
     async gethotels(req, res) {

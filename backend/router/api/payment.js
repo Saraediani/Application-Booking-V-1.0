@@ -9,7 +9,7 @@ export default {
     middlewares: [
       auth,
       function (req, res, next) {
-        authorization(req, res, next, 'admin', 'owner','user');
+        authorization(req, res, next, 'admin','owner','user');
       },
     ],
   },
@@ -27,20 +27,8 @@ export default {
     },
     {
       method: 'post',
-      path: '/',
+      path: '/method',
       handler: paymentController.method,
     },
-    // {
-    //   method: 'put',
-    //   path: '/:id',
-    //   middlewares: [auth],
-    //   handler: paymentController.updatepayment,
-    // },
-    // {
-    //   method: 'delete',
-    //   middlewares: [auth],
-    //   path: '/:id',
-    //   handler: paymentController.deletepayment,
-    // },
   ],
 };

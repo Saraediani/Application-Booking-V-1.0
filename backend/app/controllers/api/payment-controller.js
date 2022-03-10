@@ -4,32 +4,21 @@ import AppException from '../../exceptions/AppException.js';
 class paymentsController {
   
   async method(req, res){
-      
-    const payment = models.methodpayment
-    const payments = new payment({
-      type: req.body.type,
-     
+    try {
+      const methods = await models.methodpayment.create(req.body);
+      res.status(202).json({
+        status: 'success',
+        data: {
+          methods,
+        },
       });
-  
-      payments.save().then(result => {
-      console.log(result);
-      res.status(201).json({
-          message: 'Created hotel successfully',
-          createdhotel: {
-              type: result.type,
-  
-          }
-      });
-  }).catch(err => {
-      console.log(err);
-      res.status(500).json({
-          error: err
-      });
-  });
+    } catch (err) {
+      throw new AppException(err, 400);
+    }
   }
- 
   
   async getpayments(req, res) {
+
     try {
       const payments = await models.payment.find().populate('method');
       res.status(202).json({
@@ -46,6 +35,7 @@ class paymentsController {
   async createpayment(req, res) {
     
     try {
+
       const newpayment =  await models.payment.create(req.body);
 
       res.status(202).json({

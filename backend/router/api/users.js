@@ -4,13 +4,7 @@ import authrization from '../../app/middlewares/authorization.js';
 
 export default {
   group: {
-    prefix: '/users',
-    middlewares: [
-      auth,
-      function (req, res, next) {
-        authrization(req, res, next, 'admin', 'user');
-      },
-    ],
+    prefix: '/users'
   },
   routes: [
     {
@@ -37,6 +31,11 @@ export default {
       method: 'delete',
       path: '/:id',
       handler: UsersController.deleteUser,
+    },
+    {
+      method: 'post',
+      path: '/profil/:id',
+      handler: UsersController.updateprofile,
     },
   ],
 };
