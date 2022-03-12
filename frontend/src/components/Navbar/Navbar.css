@@ -63,6 +63,10 @@
   
   }
 
+  .ul_right{
+    text-align: right;
+  }
+
   ul{
       background-color: #1a83ff;
       margin: 0;
@@ -82,3 +86,5 @@
   span {
     margin-left: 16px;
   }
+
+  

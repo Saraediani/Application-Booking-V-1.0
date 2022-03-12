@@ -5,30 +5,29 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Reports',
-    path: '/reports',
+    title: 'Clients',
+    path: '/dashboard/clients',
     cName: 'nav-text'
   },
   {
-    title: 'Products',
-    path: '/products',
+    title: 'Owners',
+    path: '/dashboard/owners',
     cName: 'nav-text'
   },
   {
-    title: 'Team',
-    path: '/team',
+    title: 'Hotels',
+    path: '/dashboard/hotels',
     cName: 'nav-text'
   },
   {
-    title: 'Messages',
-    path: '/messages',
+    title: 'Rooms',
+    path: '/dashboard/rooms',
     
     cName: 'nav-text'
   },
   {
-    title: 'Support',
-    path: '/support',
-   
+    title: 'Profile',
+    path: '/dashboard/profile',
     cName: 'nav-text'
   }
 ];
