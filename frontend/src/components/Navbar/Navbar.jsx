@@ -24,11 +24,11 @@ export default function Navbar ()  {
 
             <div className='d-flex ul_right'>
             
-                <li class="nav-item1">
-               <a class="nav-link active" href="#">UserName</a>
+                <li className="nav-item1">
+               <a className="nav-link active" href="#">UserName</a>
             </li>
-           <li class="nav-item1">
-            <a class="nav-link" href="#"><AiOutlineUserSwitch size="25" /></a>
+           <li className="nav-item1">
+            <a className="nav-link" href="#"><AiOutlineUserSwitch size="25" /></a>
            </li>
           
 

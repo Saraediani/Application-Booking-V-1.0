@@ -1,6 +1,6 @@
 
 import {React,  useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import  './styles.modules.css';
 import  axios  from 'axios' ;
 const Signup = () => {
@@ -9,7 +9,7 @@ const Signup = () => {
         email: "",
         password:""
       });
-      const navigate = useNavigate(); 
+      const history = useHistory(); 
       const [error, setError] = useState("") 
 
 
@@ -28,7 +28,7 @@ const Signup = () => {
             // }
           }
           );
-          navigate("/login")
+          history.push("/login")
           console.log(res.message);
           } catch (error) {
           if (error.response &&
