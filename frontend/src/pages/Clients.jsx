@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Showclient from '../components/Clients.jsx/Show_client'
+import Showclient from '../components/Clients/Show_client'
 import './Pages.css'
 
 

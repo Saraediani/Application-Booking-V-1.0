@@ -1,9 +1,10 @@
 import React from 'react'
+import './Clients.css'
 
 function Add_client() {
   return (
     <>
-    <form>
+    <form className="p-2">
   <div className="form-row">
     <div className="form-group col-md-3">
       <label for="inputEmail4">Email</label>
