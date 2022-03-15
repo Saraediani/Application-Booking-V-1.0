@@ -1,13 +1,16 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { BrowserRouter } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"
-
+import './index.css'
+import * as serviceWorker from './serviceWorker';
+import {RoomProvider} from './context'
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <React.StrictMode>
+  <RoomProvider>
+     <App />
+  </RoomProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorker.unregister();

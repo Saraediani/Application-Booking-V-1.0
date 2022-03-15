@@ -1,6 +1,7 @@
 
-import {React,  useState} from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import React, * as react from 'react';
 import  './styles.modules.css';
 import  axios  from 'axios' ;
 const Signup = () => {
@@ -41,6 +42,7 @@ const Signup = () => {
         }
       }
   return (
+
     <div className="signup_container" >
        <div className="signup_form_container">
          <div className="left">
