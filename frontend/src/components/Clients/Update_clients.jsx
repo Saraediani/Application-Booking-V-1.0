@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Add_client() {
+function Update_clients() {
   return (
     <>
-    <form>
+     <form className="p-2">
   <div className="form-row">
     <div className="form-group col-md-3">
       <label for="inputEmail4">Email</label>
@@ -30,11 +30,12 @@ function Add_client() {
 
   </div>
 
-  <button type="submit" className="btn btn-primary">Add</button>
+  <button type="submit" className="btn btn-primary">Update</button>
 </form>
+      
       
     </>
   )
 }
 
-export default Add_client
+export default Update_clients

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { SidebarData } from './SidebarData';
 import './Navbar.css'
 import { IconContext } from 'react-icons';
+import { Dropdown } from 'react-bootstrap';
 
 
 
@@ -27,12 +28,25 @@ export default function Navbar ()  {
                 <li className="nav-item1">
                <a className="nav-link active" href="#">UserName</a>
             </li>
-           <li className="nav-item1">
-            <a className="nav-link" href="#"><AiOutlineUserSwitch size="25" /></a>
-           </li>
           
 
+           <li className="nav-item1">
+             
+           <Dropdown >
+          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+           <a className="nav-link" href="#"><AiOutlineUserSwitch size="15" /></a>
+          </Dropdown.Toggle>
+
+           <Dropdown.Menu>
+           <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+           <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
+           <Dropdown.Item href="#/action-3">Log out</Dropdown.Item>
+           </Dropdown.Menu>
+           </Dropdown>
+            </li>
+
             </div>
+
         </div>
         <nav className={!sidebar ? 'nav-menu' : 'nav-menu active'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
