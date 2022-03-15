@@ -1,16 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as BiIcons  from "react-icons/bi";
+import * as BsIcons from "react-icons/bs";
+import * as GrIcons from "react-icons/gr";
 import { Button, Modal,  } from 'react-bootstrap';
 import Add_client from './Add_client';
+import Update_client from './Update_clients';
+
+
 
 
 function Show_client() {
 
-  const [show, setShow] = useState(false);
+  const [Add, setAdd] = useState(false);
+  const [Update, setUpdate] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseU = () => setUpdate(false);
+  const handleUpdate = () => setUpdate(true);
+
+  const handleClose = () => setAdd(false);
+  const handleAdd = () => setAdd(true);
 
   return (
     <>
@@ -26,7 +35,7 @@ function Show_client() {
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
       <th scope="col">
-      <Button to='' className='menu-bars' variant="primary" onClick={handleShow}>
+      <Button size="sm"  className='menu-bars' variant="primary" onClick={handleAdd}>
             <BiIcons.BiUserPlus size="20"  /><p className="m-1" >Add User</p>
           </Button>
       </th>
@@ -40,18 +49,18 @@ function Show_client() {
       <td>Mark</td>
       <td>Mark</td>
       <td>Mark</td>
-      <td><Button variant="info">
-            <BiIcons.BiUserPlus size="10"  /><p className="m-1" >Update</p>
+      <td><Button size="sm" variant="info">
+            <GrIcons.GrUpdate size="10"  /><p className="m-1"  onClick={handleUpdate}>Update</p>
           </Button></td>
-      <td><Button variant="danger">
-            <BiIcons.BiUserPlus size="10"  /><p className="m-1" >Delete</p>
+      <td><Button size="sm" variant="danger">
+            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
           </Button></td>
     </tr>
    
   </tbody>
 </table>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={Add} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
@@ -62,9 +71,22 @@ function Show_client() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={Update} onHide={handleCloseU}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add User</Modal.Title>
+        </Modal.Header>
+
+        <Update_client />
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseU}>
+            Close
           </Button>
+
         </Modal.Footer>
       </Modal>
       
