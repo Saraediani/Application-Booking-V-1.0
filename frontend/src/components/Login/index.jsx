@@ -1,12 +1,19 @@
 
-import {React,  useState} from 'react';
+import React, { useState } from 'react';
+// import react from 'react';
+// import React, * as react from 'react';
+import jwt_decode from "jwt-decode";
+
 import { Link, } from 'react-router-dom';
 import './styles.modules.css';
 import  axios  from 'axios' ;
+// import { useResolvedPath } from 'react-router';
 const Signup = () => {
     const [data, setData] = useState({
+      // id:"",
         email: "",
-        password:""
+        password:"",
+      
       });
      
       const [error, setError] = useState("") 
@@ -21,9 +28,31 @@ const Signup = () => {
           const url ="http://localhost:3000/api/auth/login"; 
           const response = await axios.post(url, data);
           console.log(response.data.accessToken);
+          const user = jwt_decode(response.data.accessToken);
           localStorage.setItem("name", JSON.stringify(response.data.accessToken))
+          if(user.role==="client"){
+            window.location = "/" 
+        
+          }else{
+            window.location = "/signup" 
+         
+          }
+//         //  const users =  axios.get('http://localhost:3000/api/users')
+// .then(response => {
+//   console.log(response);
+  
+
+// }
+// );
+                          // window.location = "/" 
+
+          // console.log(data)
+          // if(data.role==="client"){
+          //             window.location = "/" 
+          // } else{
+          //      window.location = "/signup" 
+          // }
       
-          window.location = "/" 
           } catch (error) {
           if (error.response &&
             error.response.status >= 400 &&

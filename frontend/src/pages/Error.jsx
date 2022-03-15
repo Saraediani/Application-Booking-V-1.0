@@ -2,20 +2,18 @@ import React from 'react'
 import Hero from '../components/Hero'
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
-import RoomsContainer from '../components/RoomsContainer';
-const Rooms = () => {
+import {FaRegMeh} from 'react-icons/fa';
+
+export default function Error() {
     return (
-    <div>
-        <Hero hero="roomsHero">
-        </Hero>
-        <Banner title="Available Rooms" subtitle="Best in Class Room">
+        <>
+        <Hero hero="roomsError" />
+        <Banner title="ERROR 404 NOT FOUND" subtitle="You are lost !! Its dark everywhere">
+                <FaRegMeh className="lost"></FaRegMeh>
                 <Link to="/" className="btn btn-warning">
                       RETURN HOME
                 </Link>
         </Banner>
-        <RoomsContainer/>
-    </div>
+        </>
     )
 }
-
-export default Rooms

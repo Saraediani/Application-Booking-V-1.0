@@ -1,36 +1,47 @@
-
-import { BrowserRouter, Route, Switch,  } from 'react-router-dom';
+import React from 'react';
 import './App.css';
-import Main from './components/Main';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import Navbar from './components/Navbar';
-import Clients from './pages/Clients';
-import Hotels from './pages/Hotels';
-import Owners from './pages/Owners';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
 import Rooms from './pages/Rooms';
+import SingleRoom from './pages/SingleRoom';
+import Error from './pages/Error';
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import Footer from './components/Footer';
+import Contact from './pages/Contact';
+import Booknow from './pages/Booknow';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
-  const user = localStorage.getItem("token") 
-
   return (
+    <div className="App">
 
-    <BrowserRouter>
 
-    <Switch>
-       {user && <Route exact path="/" component={Main} /> }
-      
-       <Route exact path="/dashboard" component={Navbar} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/dashboard/clients" component={Clients} />
-        <Route exact path="/dashboard/hotels" component={Hotels} />
-        <Route exact path="/dashboard/owners" component={Owners} />
-        <Route exact path="/dashboard/rooms"  component={Rooms} />
-        <Route exact path="/login" component={Login} />
-       {/* <Route path="/" component= redirect ="/login" />}/> */}
-    </Switch>
-    </BrowserRouter>
-    
+      <BrowserRouter> 
+       <Navbar/>
+       
+        <Switch> 
+       <Route exact path="/login" component={Login} />
+         <Route exact path="/signup" component={Signup} />
+
+        
+        
+         
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/rooms/" component={Rooms}/>
+          <Route exact path="/rooms/:slug" component={SingleRoom} />
+          <Route exact path="/booknow/:slug" component={Booknow} />
+          <Route component={Error}/>
+        </Switch>
+        <Footer/>
+      </BrowserRouter>
+    </div>
   );
 }
-export default App;  
+
+export default App;
