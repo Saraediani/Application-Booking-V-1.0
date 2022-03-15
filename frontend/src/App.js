@@ -1,7 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Main from './components/Main';
 import Signup from './components/Signup';
 import Login from './components/Login';
 
@@ -26,9 +26,6 @@ function App() {
   const user = localStorage.getItem("token") 
   return (
     <div className="App">
-
-
-
 
    <BrowserRouter>
 
