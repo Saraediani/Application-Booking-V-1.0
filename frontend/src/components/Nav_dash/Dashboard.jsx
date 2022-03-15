@@ -18,7 +18,7 @@ export default function Navbar ()  {
     
       
     <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='col-12 d-flex justify-content-between navbar'>
+        <div className='col-12 d-flex justify-content-between navbar_dash'>
           <Link to='#' className='menu-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -49,7 +49,7 @@ export default function Navbar ()  {
 
         </div>
         <nav className={!sidebar ? 'nav-menu' : 'nav-menu active'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
+          <ul className='ul_dashboard nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
               <AiOutlineClose />
