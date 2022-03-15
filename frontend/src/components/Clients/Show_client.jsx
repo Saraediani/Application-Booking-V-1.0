@@ -49,8 +49,8 @@ function Show_client() {
       <td>Mark</td>
       <td>Mark</td>
       <td>Mark</td>
-      <td><Button size="sm" variant="info">
-            <GrIcons.GrUpdate size="10"  /><p className="m-1"  onClick={handleUpdate}>Update</p>
+      <td><Button size="sm" variant="info" onClick={handleUpdate}>
+            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
           </Button></td>
       <td><Button size="sm" variant="danger">
             <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
