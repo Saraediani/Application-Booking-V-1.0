@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
 import { Link } from 'react-router-dom'
 import * as BiIcons  from "react-icons/bi";
 import * as BsIcons from "react-icons/bs";
@@ -12,6 +13,23 @@ import Update_client from './Update_clients';
 
 function Show_client() {
 
+  const baseURL = "http://localhost:3000/api/clients";
+
+  let [Clients, setClients] = useState([])
+
+  async function getDAta(){
+
+    let res = await axios.get(baseURL)
+    let cli = await res.data
+    if(cli.data){
+      setClients(cli.data.clients);
+    }
+    }
+
+ useEffect( () => {
+  getDAta()
+  }, []);
+
   const [Add, setAdd] = useState(false);
   const [Update, setUpdate] = useState(false);
 
@@ -20,6 +38,32 @@ function Show_client() {
 
   const handleClose = () => setAdd(false);
   const handleAdd = () => setAdd(true);
+
+
+const data = Clients.map((Client, index) => {
+  return(
+
+    <tr>
+      <td> <p>{Client.id}</p> </td>
+      <td> <p>{Client.name}</p> </td>
+      <td> <p>{Client.email}</p> </td>
+      <td> <p>{Client.adresse}</p></td>
+      <td> <p>{Client.phone}</p></td>
+      <td><Button size="sm" variant="info" onClick={handleUpdate}>
+            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
+          </Button></td>
+      <td><Button size="sm" variant="danger">
+            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
+          </Button></td>
+  
+  </tr> 
+  )
+})
+
+console.log(Clients)
+
+
+  // if (!Clients) return null;
 
   return (
     <>
@@ -43,20 +87,10 @@ function Show_client() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td><Button size="sm" variant="info" onClick={handleUpdate}>
-            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
-          </Button></td>
-      <td><Button size="sm" variant="danger">
-            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
-          </Button></td>
-    </tr>
+    
+    {data}
    
+     
   </tbody>
 </table>
 

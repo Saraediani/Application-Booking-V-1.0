@@ -1,7 +1,24 @@
-import React from 'react'
+import { useState, useEffect} from 'react'
+
 
 function Update_clients() {
+
+  const baseURL = 'http://localhost:3000/api/clients'
+  const [Add_clients, set_addclients] = useState({
+    email: "",
+    name:"",
+    adresse:"",
+    phone:"",
+    password:""
+  })
+
+  const [error, setError] = useState("") 
   return (
+
+    
+
+
+
     <>
      <form className="p-2">
   <div className="form-row">

@@ -33,7 +33,7 @@ export default function Navbar ()  {
            <li className="nav-item1">
              
            <Dropdown >
-          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+          <Dropdown.Toggle  variant="primary" id="dropdown-basic">
            <a className="nav-link" href="#"><AiOutlineUserSwitch size="15" /></a>
           </Dropdown.Toggle>
 
@@ -48,7 +48,7 @@ export default function Navbar ()  {
             </div>
 
         </div>
-        <nav className={!sidebar ? 'nav-menu' : 'nav-menu active'}>
+        <nav className={sidebar ? 'nav-menu' : 'nav-menu active'}>
           <ul className='ul_dashboard nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
