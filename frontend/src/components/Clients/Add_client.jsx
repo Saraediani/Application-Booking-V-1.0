@@ -65,7 +65,7 @@ function Add_client() {
   </div>
   <div className="form-group">
     <label for="inputAddress">Name</label>
-    <input type="text" placeholder="name"
+    <input type="text"
             name="name"
             onChange={handleChage}
             value={set_addclients.name} className="form-control" id="inputName"  />

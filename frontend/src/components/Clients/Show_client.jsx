@@ -26,6 +26,15 @@ function Show_client() {
     }
     }
 
+  const deleteData = (id, e) =>{
+
+    axios.delete(`http://localhost:3000/api/clients/${id}`).then(() => {
+    
+      alert("Post deleted!");
+      setClients(null)
+  })
+  }
+
  useEffect( () => {
   getDAta()
   }, []);
@@ -39,20 +48,21 @@ function Show_client() {
   const handleClose = () => setAdd(false);
   const handleAdd = () => setAdd(true);
 
+  console.log(Clients)
 
 const data = Clients.map((Client, index) => {
   return(
 
-    <tr>
-      <td> <p>{Client.id}</p> </td>
-      <td> <p>{Client.name}</p> </td>
-      <td> <p>{Client.email}</p> </td>
-      <td> <p>{Client.adresse}</p></td>
-      <td> <p>{Client.phone}</p></td>
-      <td><Button size="sm" variant="info" onClick={handleUpdate}>
+    <tr key={index}>
+      <td > <p>{Client._id}</p> </td>
+      <td > <p>{Client.name}</p> </td>
+      <td > <p>{Client.email}</p> </td>
+      <td > <p>{Client.adresse}</p></td>
+      <td > <p>{Client.phone}</p></td>
+      <td><Button size="sm" value="{Client.id}" variant="info" onClick={handleUpdate}>
             <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
           </Button></td>
-      <td><Button size="sm" variant="danger">
+      <td><Button size="sm" value="{Client.id}" variant="danger" onClick={()=> deleteData(Client._id)}>
             <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
           </Button></td>
   
