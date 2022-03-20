@@ -4,7 +4,6 @@
     "description": "👉 A resful api that allows users to login as administrator or user (user / owner).",
     "main": "app.js",
     "type": "module",
-    
     "scripts": {
         "build": "babel app.js -d dist",
         "start": "npm run build && nodemon app.js"
@@ -19,6 +18,7 @@
         "dotenv": "^11.0.0",
         "express": "^4.17.2",
         "jsonwebtoken": "^8.5.1",
+        "jwt-decode": "^3.1.2",
         "mongoose": "^5.13.14",
         "mongoose-array-validator": "^1.0.3",
         "morgan": "^1.10.0",

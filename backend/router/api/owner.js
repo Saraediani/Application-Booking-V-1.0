@@ -5,12 +5,12 @@ import OwnerController from '../../app/controllers/api/Owner-controller.js'
 export default {
   group: {
     prefix: '/owners',
-    middlewares: [
-      auth,
-      function (req, res, next) {
-        authrization(req, res, next, 'admin', 'user');
-      },
-    ],
+    // middlewares: [
+    //   auth,
+    //   function (req, res, next) {
+    //     authrization(req, res, next, 'admin', 'user');
+    //   },
+    // ],
   },
   routes: [
     {

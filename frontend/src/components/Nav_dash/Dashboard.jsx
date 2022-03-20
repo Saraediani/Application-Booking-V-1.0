@@ -48,7 +48,7 @@ export default function Navbar ()  {
             </div>
 
         </div>
-        <nav className={!sidebar ? 'nav-menu' : 'nav-menu active'}>
+        <nav className={sidebar ? 'nav-menu' : 'nav-menu active'}>
           <ul className='ul_dashboard nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>

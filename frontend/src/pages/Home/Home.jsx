@@ -2,7 +2,6 @@ import React from 'react'
 import Hero from '../../components/Home/Hero';
 import Banner from '../../components/Home/Banner';
 import { Link } from 'react-router-dom';
-import Services from '../../components/Home/Services';
 import FeaturedRooms from '../../components/Home/FeaturedRooms';
 import Navbar from '../../components/Home/Navbar';
 
@@ -18,8 +17,9 @@ function Home() {
                       Our Rooms
                 </Link>
         </Banner>
-        <Services/> 
+      
         <FeaturedRooms/>
+    
         
         </>
 

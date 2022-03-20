@@ -30,11 +30,11 @@ const Signup = () => {
           console.log(response.data.accessToken);
           const user = jwt_decode(response.data.accessToken);
           localStorage.setItem("name", JSON.stringify(response.data.accessToken))
-          if(user.role==="client"){
+          if(user.role==="client" || "user"){
             window.location = "/" 
         
           }else{
-            window.location = "/signup" 
+            window.location = "/dashboard" 
          
           }
 //         //  const users =  axios.get('http://localhost:3000/api/users')

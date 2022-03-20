@@ -1,9 +1,11 @@
 import models from '../../models/index.js';
 import AppException from '../../exceptions/AppException.js';
+import jwt_decode from 'jwt-decode';
 
 class UsersController {
     async getUser(req, res) {
         try {
+            
             const users = await models.users.findById(req.params.id);
             res.status(202).json({
                 status: 'success',

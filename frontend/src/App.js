@@ -8,8 +8,9 @@ import Login from './components/Login';
 // Dashboard import
 import Nav_dash from './components/Nav_dash';
 import Clients from './pages/Dashboard/Clients';
-import Hotels from './pages/Dashboard/Hotels';
 import Owners from './pages/Dashboard/Owners';
+
+import Hotels from './pages/Dashboard/Hotels';
 import Rooms_dashboard from './pages/Dashboard/Rooms';
 
 // Home import
@@ -42,13 +43,14 @@ function App() {
           <Route exact path="/rooms/" component={Rooms}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
-       
+
 
         <Route exact path="/dashboard" component={Nav_dash} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/dashboard/clients" component={Clients} />
-        <Route exact path="/dashboard/hotels" component={Hotels} />
         <Route exact path="/dashboard/owners" component={Owners} />
+
+        <Route exact path="/dashboard/hotels" component={Hotels} />
         <Route exact path="/dashboard/rooms"  component={Rooms_dashboard} />
         <Route exact path="/login" component={Login} />
        {/* <Route path="/" component= redirect ="/login" />}/> */}
