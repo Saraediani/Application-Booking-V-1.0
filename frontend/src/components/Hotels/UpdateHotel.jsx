@@ -102,6 +102,7 @@ function UpdateHotels(props) {
           <div className="form-group col-md-6">
             <label for="inputCity">Adress</label>
 
+<<<<<<< HEAD
             <input
               type="text"
               value={Hotel.address}
@@ -114,6 +115,14 @@ function UpdateHotels(props) {
           Update
         </button>
       </form>
+=======
+  </div>
+
+  <button type="submit" className="btn btn-warning">Update</button>
+</form>
+      
+      
+>>>>>>> 57ca0c254ee04ddff19dca101ae691ced844364e
     </>
   );
 }
