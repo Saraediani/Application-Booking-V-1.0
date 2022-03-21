@@ -10,7 +10,7 @@ import  axios  from 'axios' ;
 // import { useResolvedPath } from 'react-router';
 const Signup = () => {
     const [data, setData] = useState({
-      // id:"",
+      
         email: "",
         password:"",
       
@@ -34,24 +34,10 @@ const Signup = () => {
             window.location = "/" 
         
           }else{
-            window.location = "/signup" 
+            window.location = "/dashboard"
          
           }
-//         //  const users =  axios.get('http://localhost:3000/api/users')
-// .then(response => {
-//   console.log(response);
-  
 
-// }
-// );
-                          // window.location = "/" 
-
-          // console.log(data)
-          // if(data.role==="client"){
-          //             window.location = "/" 
-          // } else{
-          //      window.location = "/signup" 
-          // }
       
           } catch (error) {
           if (error.response &&

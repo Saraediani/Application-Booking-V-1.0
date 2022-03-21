@@ -12,7 +12,7 @@ const index = () => {
       <h1>Clients</h1>
       </div>
 
-      <div className='col-md-10 text-center m-auto'>
+      <div className='table-agents col-md-10 text-center m-auto'>
 
       <Showclient />
       </div>

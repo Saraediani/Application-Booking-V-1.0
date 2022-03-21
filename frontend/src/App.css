@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 .App {
   text-align: center;
@@ -14,11 +14,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 * {
   margin: 0;
@@ -69,12 +69,13 @@ h6 {
 }
 
 .btn-primary {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   letter-spacing: var(--mainSpacing);
   color: var(--mainBlack);
   background: var(--primaryColor);
-  padding: 0.4rem 0.9rem;
+  padding: 0rem 0rem;
   border: 3px solid var(--primaryColor);
   transition: var(--mainTransition);
   text-transform: uppercase;
@@ -92,27 +93,27 @@ h6 {
   text-transform: uppercase;
   cursor: pointer;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   text-decoration: none;
-  background: transparent!important;
-  color: #fff!important;
+  background: transparent !important;
+  color: #fff !important;
 }
-.btn-warning:hover{
+.btn-warning:hover {
   text-decoration: none;
-  background: transparent!important;
-  color: yellow!important;
+  background: transparent !important;
+  color: yellow !important;
 }
 .loading {
   text-transform: capitalize;
   text-align: center;
   margin-top: 3rem;
 }
-.roomerror{
+.roomerror {
   margin-top: 100px;
 }
-.roomerror:hover .error{
-  background-color: #2C3E50;
-  color: #ffffff!important;
+.roomerror:hover .error {
+  background-color: #2c3e50;
+  color: #ffffff !important;
 }
 .error {
   text-align: center;
@@ -129,61 +130,54 @@ h6 {
 
 /* end of globals */
 /* Navbar */
-.nav-link{
+.nav-link {
   padding: 8px 15px;
-  margin-left: 10px;
-  margin-right: 20px;
-  font-size: 18px;
-  text-align: center;
-  border: 2px solid transparent;
-  transition: .5s linear;
+
+  font-size: 17px;
+
+  transition: 0.5s linear;
   font-weight: 800;
-  -webkit-transition: .5s linear;
-  -moz-transition: .5s linear;
-  -ms-transition: .5s linear;
-  -o-transition: .5s linear;
 }
 .bg-transparent.scrolled {
-  background-color: black!important;
-  transition:500ms ease;
+  background-color: black !important;
+  transition: 500ms ease;
 }
 
-.navbar-brand{
-  font-size: 32px!important;
-  color: #ffffff!important;
+.navbar-brand {
+  font-size: 32px !important;
+  color: #ffffff !important;
 }
-.nav-link:hover{
+.nav-link:hover {
   color: #ffffff;
   border-bottom: 2px solid #ffffff;
 }
-.nav-link.active_class{
-color: #ffffff;
-border: 2px solid #ffffff;
-font-weight: 800;
+.nav-link.active_class {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: 800;
 }
 
-.form-control{
-border: 2px solid #000;
+.form-control {
+  border: 2px solid #000;
 }
 .form-control:focus,
 .form-control.active {
-  border: 2px solid #000000!important;
+  border: 2px solid #000000 !important;
 }
-textarea:focus, 
-textarea.form-control:focus, 
-input.form-control:focus, 
-input[type=text]:focus, 
-input[type=password]:focus, 
-input[type=email]:focus, 
-input[type=number]:focus, 
-[type=text].form-control:focus, 
-[type=password].form-control:focus, 
-[type=email].form-control:focus, 
-[type=tel].form-control:focus, 
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+[type="text"].form-control:focus,
+[type="password"].form-control:focus,
+[type="email"].form-control:focus,
+[type="tel"].form-control:focus,
 [contenteditable].form-control:focus {
-box-shadow: inset 0 -1px 0 #ddd;
+  box-shadow: inset 0 -1px 0 #ddd;
 }
-
 
 /* end of navbar */
 /* Hero */
@@ -204,11 +198,11 @@ box-shadow: inset 0 -1px 0 #ddd;
   background-image: url("./images/room-3.jpeg");
   min-height: calc(100vh - 0px);
 }
-.roomsError{
+.roomsError {
   background-image: url("./images/error.jpg");
   min-height: calc(100vh - 0px);
 }
-.lost{
+.lost {
   font-size: 44px;
   color: yellow;
   text-align: center;
@@ -217,8 +211,8 @@ box-shadow: inset 0 -1px 0 #ddd;
 /* Banner */
 .banner {
   display: inline-block;
-  position: absolute!important;
-  background: rgba(0, 0, 0, 0.5)!important;
+  position: absolute !important;
+  background: rgba(0, 0, 0, 0.5) !important;
   color: var(--mainWhite);
   text-align: center;
   text-transform: capitalize;
@@ -228,7 +222,7 @@ box-shadow: inset 0 -1px 0 #ddd;
   transform: translate(-50%, -50%);
 }
 .banner h1 {
-  font-size: 44px!important;
+  font-size: 44px !important;
 }
 .banner div {
   width: 10rem;
@@ -242,10 +236,10 @@ box-shadow: inset 0 -1px 0 #ddd;
 }
 @media screen and (max-width: 576px) {
   .banner {
-    padding: 2rem 3rem!important
+    padding: 2rem 3rem !important;
   }
   .banner h1 {
-    font-size: 32px!important;
+    font-size: 32px !important;
   }
 }
 @media screen and (min-width: 992px) {
@@ -281,7 +275,7 @@ box-shadow: inset 0 -1px 0 #ddd;
   padding: 3rem 0;
 }
 .services {
-  background: #EBF5FB;
+  background: #ebf5fb;
   text-align: center;
 }
 
@@ -296,7 +290,7 @@ box-shadow: inset 0 -1px 0 #ddd;
   -ms-transition: 1s linear;
   -o-transition: 1s linear;
 }
-.services span:hover{
+.services span:hover {
   transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
@@ -342,7 +336,7 @@ box-shadow: inset 0 -1px 0 #ddd;
   position: relative;
 }
 .room:hover {
-  box-shadow: 0px 9px 18px rgba(0, 0, 0, 0.5)!important;
+  box-shadow: 0px 9px 18px rgba(0, 0, 0, 0.5) !important;
 }
 
 .price-top {
@@ -392,7 +386,7 @@ box-shadow: inset 0 -1px 0 #ddd;
   -o-transform: translate(-90%, -200%) scale(1);
 }
 .room-info {
-  background: #F2F3F4;
+  background: #f2f3f4;
   text-transform: capitalize;
   padding: 0.5rem 0;
   text-align: center;
@@ -524,36 +518,35 @@ box-shadow: inset 0 -1px 0 #ddd;
 
 /* aboutus */
 
-.aboutus,.contact{
-  margin-top: 100px!important;
+.aboutus,
+.contact {
+  margin-top: 100px !important;
 }
-.about_company,.team{
+.about_company,
+.team {
   padding: 60px 30px;
 }
-.about_info{
+.about_info {
   letter-spacing: 40;
 }
-.carousel-inner{
-  min-height: 400px!important;
-  max-height: 400px!important;
+.carousel-inner {
+  min-height: 400px !important;
+  max-height: 400px !important;
 }
-.connect{
-  font-size: 44px!important;
+.connect {
+  font-size: 44px !important;
   padding: 5px 8px;
 }
 /* end of about us */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
-
-
-
 
 .App-header {
   background-color: #282c34;
@@ -565,8 +558,6 @@ box-shadow: inset 0 -1px 0 #ddd;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-
 
 .App-link {
   color: #61dafb;

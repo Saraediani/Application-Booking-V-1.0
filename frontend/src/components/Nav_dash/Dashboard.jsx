@@ -50,8 +50,8 @@ export default function Navbar ()  {
         </div>
         <nav className={!sidebar ? 'nav-menu' : 'nav-menu active'}>
           <ul className='ul_dashboard nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
+            <li className='navbar-1'>
+              <Link to='/' className='menu-bars'>
               <AiOutlineClose />
               </Link>
             </li>
