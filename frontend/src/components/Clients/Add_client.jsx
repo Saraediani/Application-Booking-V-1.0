@@ -3,7 +3,6 @@ import axios from 'axios'
 import './Clients.css'
 
 
-
 function Add_client() {
 
   const baseURL = 'http://localhost:3000/api/clients'
@@ -67,6 +66,7 @@ function Add_client() {
     <label for="inputAddress">Name</label>
     <input type="text"
             name="name"
+            placeholder="Name"
             onChange={handleChage}
             value={set_addclients.name} className="form-control" id="inputName"  />
   </div>
