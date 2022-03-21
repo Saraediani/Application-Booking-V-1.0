@@ -14,7 +14,7 @@ function Home() {
         <Hero hero="defaultHero">
         </Hero>
         <Banner title="Luxurious Rooms" subtitle="deluxe rooms starting at 500 MAD ">
-                <Link to="/rooms" className="btn btn-primary">
+                <Link to="/rooms" className="btn btn-warning">
                       Our Rooms
                 </Link>
         </Banner>

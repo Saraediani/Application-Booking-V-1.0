@@ -15,11 +15,11 @@ import Rooms_dashboard from './pages/Dashboard/Rooms';
 // Home import
 import Home from './pages/Home/Home';
 import Rooms from './pages/Home/Rooms';
+import Hotel from './pages/Home/Hotel';
 import SingleRoom from './pages/Home/SingleRoom';
 import Error from './pages/Home/Error';
-import About from './pages/Home/About';
 import Footer from './components/Home/Footer';
-import Contact from './pages/Home/Contact';
+
 import Booknow from './pages/Home/Booknow';
 
 function App() {
@@ -29,17 +29,14 @@ function App() {
 
    <BrowserRouter>
 
-
-
     <Switch>
        {user && <Route exact path="/" component={Home} /> }
 
       
        <Route exact path="/" component={Home} />
-       
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
+
           <Route exact path="/rooms/" component={Rooms}/>
+          <Route exact path="/hotels/" component={Hotel}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
        
@@ -51,9 +48,10 @@ function App() {
         <Route exact path="/dashboard/owners" component={Owners} />
         <Route exact path="/dashboard/rooms"  component={Rooms_dashboard} />
         <Route exact path="/login" component={Login} />
+        <Route component={Error}/>
        {/* <Route path="/" component= redirect ="/login" />}/> */}
           </Switch>
-
+          <Footer/>
     </BrowserRouter>
 
     </div>

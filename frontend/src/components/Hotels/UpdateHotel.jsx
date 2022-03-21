@@ -30,7 +30,7 @@ function UpdateHotels() {
 
   </div>
 
-  <button type="submit" className="btn btn-primary">Update</button>
+  <button type="submit" className="btn btn-warning">Update</button>
 </form>
       
       
