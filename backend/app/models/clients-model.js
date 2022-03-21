@@ -35,8 +35,8 @@ const clientsShema = new mongoose.Schema({
   role: {
     type: String,
     required: false,
-    default: 'user',
-    enum: ['user', 'client'],
+    default: 'client',
+    enum: ['client'],
   },
   created_at: {
     type: Date,

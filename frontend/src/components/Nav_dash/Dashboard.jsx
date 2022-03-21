@@ -33,7 +33,7 @@ export default function Navbar ()  {
            <li className="nav-item1">
              
            <Dropdown >
-          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+          <Dropdown.Toggle  variant="primary" id="dropdown-basic">
            <a className="nav-link" href="#"><AiOutlineUserSwitch size="15" /></a>
           </Dropdown.Toggle>
 

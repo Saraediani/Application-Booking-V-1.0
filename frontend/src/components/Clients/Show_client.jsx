@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
 import * as BiIcons  from "react-icons/bi";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
@@ -12,14 +12,67 @@ import Update_client from './Update_clients';
 
 function Show_client() {
 
+  const baseURL = "http://localhost:3000/api/clients";
+
+  let [Clients, setClients] = useState([])
+  const [client, set_client] = useState();
   const [Add, setAdd] = useState(false);
   const [Update, setUpdate] = useState(false);
-
   const handleCloseU = () => setUpdate(false);
-  const handleUpdate = () => setUpdate(true);
+
+  async function getDAta(){
+
+    let res = await axios.get(baseURL)
+    let cli = await res.data
+    if(cli.data){
+      setClients(cli.data.clients);
+    }
+    }
+
+  const deleteData = (id, e) =>{
+
+    axios.delete(`http://localhost:3000/api/clients/${id}`).then(() => {
+    
+      alert("Post deleted!");
+      setClients(null)
+  })
+  }
+
+
+ useEffect( () => {
+  getDAta()
+  }, [Update, client]);
+
+  
+  const handleUpdate = (client) => {
+    set_client(client)
+    setUpdate(true)
+    };
 
   const handleClose = () => setAdd(false);
   const handleAdd = () => setAdd(true);
+
+
+const data = Clients.map((Client, index) => {
+  return(
+
+    <tr key={index}>
+      <td > <p>{Client._id}</p> </td>
+      <td > <p>{Client.name}</p> </td>
+      <td > <p>{Client.email}</p> </td>
+      <td > <p>{Client.adresse}</p></td>
+      <td > <p>{Client.phone}</p></td>
+      <td><Button size="sm"  variant="info" onClick={()=>handleUpdate(Client)}>
+            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
+          </Button></td>
+      <td><Button size="sm"  variant="danger" onClick={()=> deleteData(Client._id)}>
+            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
+          </Button></td>
+  
+  </tr> 
+  )
+})
+
 
   return (
     <>
@@ -43,20 +96,10 @@ function Show_client() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td><Button size="sm" variant="info" onClick={handleUpdate}>
-            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
-          </Button></td>
-      <td><Button size="sm" variant="danger">
-            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
-          </Button></td>
-    </tr>
+    
+    {data}
    
+     
   </tbody>
 </table>
 
@@ -80,7 +123,7 @@ function Show_client() {
           <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
 
-        <Update_client />
+        <Update_client data={client} close={handleCloseU} />
 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseU}>

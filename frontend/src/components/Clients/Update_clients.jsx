@@ -1,31 +1,70 @@
-import React from 'react'
+import { useState, useEffect} from 'react'
+import axios from "axios";
+import React from "react";
 
-function Update_clients() {
+function Update_clients({data,Close}) {  
+  
+  
+  
+  const [Clients, set_Clients] = useState(
+    data
+    
+    );
+    
+    const baseURL = `http://localhost:3000/api/clients/`
+  
+      const updateClient =(e)=>{
+          e.preventDefault();
+          axios.put(`${baseURL}/${Clients._id}`, Clients).then((response) => {
+              console.log(response);
+              Close();
+          });
+     
+         
+      }
+    
+      const handelInput =(e)=>{
+  
+          set_Clients({...Clients, [e.target.name] : e.target.value})
+          console.log(Clients)
+      }
+
+  
+    
+  
+  
+    if (!Clients) return "No client!"
+
   return (
+
+    
+
+
+
     <>
-     <form className="p-2">
+     <form className="p-2"  onSubmit={updateClient}>
   <div className="form-row">
     <div className="form-group col-md-3">
-      <label for="inputEmail4">Email</label>
-      <input type="email" className="form-control" id="inputEmail4" placeholder="Email" />
+      <label htmlFor="Email">Email</label>
+      <input type="email" onChange={handelInput}  className="form-control" value={Clients.email}  />
     </div>
     <div className="form-group col-md-3">
-      <label for="inputPassword4">Password</label>
-      <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
+      <label htmlFor="Password">Password</label>
+      <input type="password" onChange={handelInput}  className="form-control" value={Clients.password} />
     </div>
   </div>
   <div className="form-group">
-    <label for="inputAddress">Name</label>
-    <input type="text" className="form-control" id="inputName" placeholder="1234 Main St" />
+    <label htmlFor="Name">Name</label>
+    <input type="text" onChange={handelInput}  className="form-control" value={Clients.name}  />
   </div>
   <div className="form-group">
-    <label for="inputAddress2">Phone</label>
-    <input type="text" className="form-control" id="inputPhone" placeholder="Apartment, studio, or floor" />
+    <label htmlFor="Phone">Phone</label>
+    <input type="text" onChange={handelInput}  className="form-control" value={Clients.phone}   />
   </div>
   <div className="form-row">
     <div className="form-group col-md-6">
-      <label for="inputCity">Adress</label>
-      <input type="text" className="form-control" id="inputAdress" />
+      <label htmlFor="Adress">Adress</label>
+      <input type="text" onChange={handelInput}  className="form-control" value={Clients.adresse}  />
     </div>
 
   </div>
