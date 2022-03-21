@@ -1,6 +1,6 @@
 import auth from '../../app/middlewares/authentification.js';
 import authrization from '../../app/middlewares/authorization.js';
-import OwnerController from '../../app/controllers/api/Owner-controller.js'
+import OwnerController from '../../app/controllers/api/Owner-controller.js';
 
 export default {
   group: {

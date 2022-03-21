@@ -1,57 +1,62 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 function AddHotel() {
-
-
-  let token = JSON.parse(localStorage.getItem('name'));
-console.log(token);
-  const baseURL = 'http://localhost:3000/api/hotels'
+  let token = JSON.parse(localStorage.getItem("name"));
+  const baseURL = "http://localhost:3000/api/hotels";
   const [AddHotel, setAddHotel] = useState({
-    name:"",
-    type:"",
-    description:"",
-    address:""
-  })
-  const [images, setImages] = useState([]);
+    name: "",
+    type: "",
+    description: "",
+    address: "",
+  });
+  const [Image, setImages] = useState([]);
 
   const handelImages = (e) => {
-    const uploadsImages = Array.from(e.target.files)
-    setImages(uploadsImages)
-    setAddHotel({...AddHotel, hotelImage: uploadsImages})
-  }
+    const uploadsImages = e.target.files[0];
+    setImages(uploadsImages);
+    setAddHotel({ ...AddHotel, hotelImage: Image });
+  };
 
-  const {name, type, description, address} = AddHotel
+  const { name, type, description, address } = AddHotel;
 
-  const [error, setError] = useState("") 
+  const [error, setError] = useState("");
 
   const handleChage = ({ currentTarget: input }) => {
     setAddHotel({ ...AddHotel, [input.name]: input.value });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(AddHotel);
+    let bodyFormData = new FormData();
+    bodyFormData.append("name", AddHotel.name);
+    bodyFormData.append("type", AddHotel.type);
+    bodyFormData.append("description", AddHotel.description);
+    bodyFormData.append("address", AddHotel.address);
+    bodyFormData.append("hotelImage", Image);
     try {
-      const response = await axios.post(baseURL, AddHotel, { headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }});
-      console.log(response.data);
+      const response = await axios({
+        method: "post",
+        url: baseURL,
+        data: bodyFormData,
 
-      window.location = "/Hotels" 
-      } catch (error) {
-      if (error.response &&
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }).then(() => {
+        window.location = "/dashboard/hotels";
+      });
+    } catch (error) {
+      if (
+        error.response &&
         error.response.status >= 400 &&
-        error.response.status <= 500 
-      ){
-        setError(error.response.data.message)
-
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
       }
     }
-  }
+  };
   return (
     <>
       <form className="p-2" onSubmit={handleSubmit}>
@@ -101,7 +106,6 @@ console.log(token);
             className="form-control"
             id="inputImage"
             placeholder="Image"
-            value={images}
             onChange={handelImages}
           />
         </div>
@@ -125,6 +129,6 @@ console.log(token);
       </form>
     </>
   );
-  }
+}
 
 export default AddHotel;
