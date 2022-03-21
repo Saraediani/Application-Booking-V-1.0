@@ -20,7 +20,7 @@ function AddHotel() {
 
   const { name, type, description, address } = AddHotel;
 
-  const [error, setError] = useState("");
+  const [ setError] = useState("");
 
   const handleChage = ({ currentTarget: input }) => {
     setAddHotel({ ...AddHotel, [input.name]: input.value });
@@ -35,7 +35,7 @@ function AddHotel() {
     bodyFormData.append("address", AddHotel.address);
     bodyFormData.append("hotelImage", Image);
     try {
-      const response = await axios({
+      await axios({
         method: "post",
         url: baseURL,
         data: bodyFormData,

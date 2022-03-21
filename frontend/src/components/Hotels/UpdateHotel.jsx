@@ -3,9 +3,7 @@ import axios from "axios";
 
 function UpdateHotels(props) {
   let token = JSON.parse(localStorage.getItem("name"));
-
   const baseURL = `http://localhost:3000/api/hotels/${props.id}`;
-
   const [Hotel, setAddHotel] = useState({
     name: "",
     type: "",
@@ -23,13 +21,13 @@ function UpdateHotels(props) {
 
   useEffect(() => {
     getDAta();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChage = async ({ currentTarget: input }) => {
     setAddHotel({ ...Hotel, [input.name]: input.value });
-
-    console.log(Hotel);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let bodyFormData = new FormData();
@@ -39,7 +37,7 @@ function UpdateHotels(props) {
     bodyFormData.append("address", Hotel.address);
     bodyFormData.append("hotelImage", Image);
     try {
-      const res = await axios({
+      await axios({
         method: "put",
         url: baseURL,
         data: Hotel,
@@ -55,6 +53,7 @@ function UpdateHotels(props) {
       console.log(error);
     }
   };
+
   return (
     <>
       <form className="p-2" onSubmit={handleSubmit}>
@@ -72,11 +71,7 @@ function UpdateHotels(props) {
           </div>
           <div className="form-group col-md-3">
             <label for="inputDescription">Description</label>
-            <input
-              type="text"
-              className="form-control"
-              id="Description"
-            />
+            <input type="text" className="form-control" id="Description" />
           </div>
         </div>
         <div className="form-group">
@@ -102,7 +97,6 @@ function UpdateHotels(props) {
           <div className="form-group col-md-6">
             <label for="inputCity">Adress</label>
 
-<<<<<<< HEAD
             <input
               type="text"
               value={Hotel.address}
@@ -115,14 +109,6 @@ function UpdateHotels(props) {
           Update
         </button>
       </form>
-=======
-  </div>
-
-  <button type="submit" className="btn btn-warning">Update</button>
-</form>
-      
-      
->>>>>>> 57ca0c254ee04ddff19dca101ae691ced844364e
     </>
   );
 }
