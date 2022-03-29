@@ -10,16 +10,13 @@ const hotelsSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        // required: [true, 'hotel must have a description'],
+        required: [true, 'hotel must have a description'],
     },
     type: {
         type: String,
-        // required: [true, 'hotel must have a name']
+        required: [true, 'hotel must have a type']
     },
-    // coverImage: {
-    //     type: String,
-    //      required: [true, 'hotel must have a cover image']
-    // },
+    
     hotelImage: {
         type: Array,
         minItems: {
@@ -34,7 +31,7 @@ const hotelsSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        // required: [true, 'hotel must have a address']
+        required: [true, 'hotel must have a address']
     },
 
     created_at: {

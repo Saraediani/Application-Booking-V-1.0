@@ -4,10 +4,9 @@
     "description": "👉 A resful api that allows users to login as administrator or user (user / owner).",
     "main": "app.js",
     "type": "module",
-    
     "scripts": {
         "build": "babel app.js -d dist",
-        "start": "npm run build && nodemon app.js"
+        "start": "nodemon app.js"
     },
     "author": "SARA'H",
     "dependencies": {
@@ -38,6 +37,7 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.28.0",
+        "nodemon": "^2.0.15",
         "prettier": "^2.5.1"
     }
 }

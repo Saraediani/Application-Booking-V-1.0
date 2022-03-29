@@ -17,7 +17,7 @@ function UpdateHotels(props) {
     let res = await axios.get(baseURL);
     let data = res.data.data.hotel;
     console.log(data);
-    setAddHotel({ ...Hotel, name: data.name });
+    setAddHotel({ ...Hotel, ...data });
     console.log(Hotel);
   }
 
@@ -74,55 +74,54 @@ function UpdateHotels(props) {
             <label for="inputDescription">Description</label>
             <input
               type="text"
+              name="Description"
               className="form-control"
               id="Description"
+              value={Hotel.description}
+              onChange={handleChage}
             />
           </div>
         </div>
         <div className="form-group">
           <label for="inputType">Type</label>
           <input
-            type="type"
+            type="text"
+            name="type"
             className="form-control"
             id="inputType"
             value={Hotel.type}
-            placeholder="Type"
+            onChange={handleChage}
           />
         </div>
         <div className="form-group">
           <label for="inputImage">Image</label>
           <input
             type="file"
+            name="image"
             className="form-control"
             id="inputImage"
-            placeholder="Image"
+            value={Image}
+            onChange={handleChage}
           />
         </div>
         <div className="form-row">
           <div className="form-group col-md-6">
             <label for="inputCity">Adress</label>
 
-<<<<<<< HEAD
             <input
               type="text"
+              name="address"
               value={Hotel.address}
               className="form-control"
               id="inputAdress"
+              onChange={handleChage}
             />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-warning">
           Update
         </button>
       </form>
-=======
-  </div>
-
-  <button type="submit" className="btn btn-warning">Update</button>
-</form>
-      
-      
->>>>>>> 57ca0c254ee04ddff19dca101ae691ced844364e
     </>
   );
 }

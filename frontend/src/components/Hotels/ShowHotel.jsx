@@ -35,6 +35,7 @@ function ShowHotel() {
         },
       })
       .then(() => {
+        alert("Hotel gonna !");
         getDAta();
       });
   };

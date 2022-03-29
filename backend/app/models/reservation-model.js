@@ -14,8 +14,7 @@ const reservationSchema = new mongoose.Schema({
      },  
 
      status: {
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref:'rooms',
+
       type: String,
       default: 'booked',
       enum: ['booked', 'available'],
