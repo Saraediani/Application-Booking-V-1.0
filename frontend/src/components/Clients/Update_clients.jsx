@@ -11,11 +11,13 @@ function Update_clients({data,Close}) {
     
     );
     
+  const token = JSON.parse(localStorage.getItem('name'));
+
     const baseURL = `http://localhost:3000/api/clients/`
   
       const updateClient =(e)=>{
           e.preventDefault();
-          axios.put(`${baseURL}/${Clients._id}`, Clients).then((response) => {
+          axios.put(`${baseURL}/${Clients._id}`, Clients, { headers: {"Authorization" : `Bearer ${token}`} }).then((response) => {
               console.log(response);
               Close();
           });

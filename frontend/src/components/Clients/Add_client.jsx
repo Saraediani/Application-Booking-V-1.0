@@ -44,7 +44,7 @@ function Add_client() {
     <form className="p-2" onSubmit={handleSubmit}>
   <div className="form-row">
     <div className="form-group col-md-3">
-      <label for="inputEmail4">Email</label>
+      <label htmlFor="inputEmail4">Email</label>
       <input type="email"
             placeholder='Email'
             name='email'
@@ -53,7 +53,7 @@ function Add_client() {
             required className="form-control" id="inputEmail4" />
     </div>
     <div className="form-group col-md-3">
-      <label for="inputPassword4">Password</label>
+      <label htmlFor="inputPassword4">Password</label>
       <input  type="password"
             placeholder="Password"
             name="password"
@@ -63,15 +63,15 @@ function Add_client() {
     </div>
   </div>
   <div className="form-group">
-    <label for="inputAddress">Name</label>
+    <label htmlFor="inputAddress">Name</label>
     <input type="text"
             name="name"
             placeholder="Name"
             onChange={handleChage}
-            value={set_addclients.name} className="form-control" id="inputName"  />
+             className="form-control"  />
   </div>
   <div className="form-group">
-    <label for="inputAddress2">Phone</label>
+    <label htmlFor="inputAddress2">Phone</label>
     <input type="text" placeholder="phone"
             name="password"
             onChange={handleChage}
@@ -79,7 +79,7 @@ function Add_client() {
   </div>
   <div className="form-row">
     <div className="form-group col-md-6">
-      <label for="inputCity">Adress</label>
+      <label htmlFor="inputCity">Adress</label>
       <input type="text" placeholder="Password"
             name="adress"
             onChange={handleChage}

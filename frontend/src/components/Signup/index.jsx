@@ -1,7 +1,6 @@
 
 import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import React, * as react from 'react';
 import  './styles.modules.css';
 import  axios  from 'axios' ;
 const Signup = () => {
@@ -19,18 +18,12 @@ const Signup = () => {
       };
       const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         try {
-          const url ="http://localhost:3000/api/auth/register"; 
-          const { data: res } = await axios.post(url, data,{
-
-            // headers : {
-            //   'Content-Type': 'text/plain'
-            // }
-          }
-          );
+          const url ="http://localhost:4000/api/auth/register"; 
+          const { data: res } = await axios.post(url, data );
           history.push("/login")
-          console.log(res.message);
+          // console.log(res.message);
           } catch (error) {
           if (error.response &&
             error.response.status >= 400 &&

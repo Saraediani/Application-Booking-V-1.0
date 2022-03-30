@@ -25,7 +25,7 @@ const Signup = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const url ="http://localhost:3000/api/auth/login"; 
+          const url ="http://localhost:4000/api/auth/login"; 
           const response = await axios.post(url, data);
           console.log(response.data.accessToken);
           const user = jwt_decode(response.data.accessToken);
@@ -33,7 +33,7 @@ const Signup = () => {
           if(user.role==="client" || "user"){
             window.location = "/" 
         
-          }else{
+          }if(user.role==="admin" || "owner"){
             window.location = "/dashboard" 
          
           }

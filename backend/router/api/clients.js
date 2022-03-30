@@ -5,12 +5,12 @@ import authrization from '../../app/middlewares/authorization.js';
 export default {
   group: {
     prefix: '/clients',
-    // middlewares: [
-    //   auth,
-    //   function (req, res, next) {
-    //     authrization(req, res, next, 'admin', 'user', 'client');
-    //   },
-    // ],
+    middlewares: [
+      auth,
+      function (req, res, next) {
+        authrization(req, res, next, 'admin', 'owner');
+      },
+    ],
   },
   routes: [
     {

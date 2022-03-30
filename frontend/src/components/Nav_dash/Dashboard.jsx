@@ -11,6 +11,12 @@ import { Dropdown } from 'react-bootstrap';
 
 export default function Navbar ()  {
   const [sidebar, setSidebar] = useState(false);
+  const handleLogout = () => {
+
+    localStorage.clear();
+        window.location.href = '/';
+
+  }
 
   const showSidebar = () => setSidebar(!sidebar);
   return (
@@ -38,9 +44,9 @@ export default function Navbar ()  {
           </Dropdown.Toggle>
 
            <Dropdown.Menu>
-           <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+           <Dropdown.Item onClick={handleLogout}>Profile</Dropdown.Item>
            <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
-           <Dropdown.Item href="#/action-3">Log out</Dropdown.Item>
+           <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
            </Dropdown.Menu>
            </Dropdown>
             </li>

@@ -5,6 +5,7 @@ import AuthService from '../../services/auth-service.js';
 class AuthController {
   async login(req, res) {
     const { email, password } = req.body;
+    console.log('hhhhh');
 
     const user = await models.users.findOne({ email }).select('+password');
 

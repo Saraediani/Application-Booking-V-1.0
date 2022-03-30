@@ -12,7 +12,7 @@ class Server {
         this.port = process.env.PORT;
         this.app = express();
     }
-
+    
     start() {
         this.app.use(cors())
         this._setupRoutes();

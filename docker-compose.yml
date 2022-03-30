@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  hotel-booking-db:
+    image: mongo
+    volumes:
+      - data:/data/db
+  hotel-booking-server:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app/
+      - /app/node_modules
+    depends_on:
+      - hotel-booking-db
+  hotel-booking-frontend:
+    build: ./frontend
+    ports:
+      - "3000:9000"
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+volumes:
+  data:
+    

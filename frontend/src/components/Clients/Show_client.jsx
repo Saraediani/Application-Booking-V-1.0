@@ -19,10 +19,13 @@ function Show_client() {
   const [Add, setAdd] = useState(false);
   const [Update, setUpdate] = useState(false);
   const handleCloseU = () => setUpdate(false);
+  const token = JSON.parse(localStorage.getItem('name'));
 
+
+  
   async function getDAta(){
 
-    let res = await axios.get(baseURL)
+    let res = await axios.get(baseURL, { headers: {"Authorization" : `Bearer ${token}`} })
     let cli = await res.data
     if(cli.data){
       setClients(cli.data.clients);
@@ -31,7 +34,7 @@ function Show_client() {
 
   const deleteData = (id, e) =>{
 
-    axios.delete(`http://localhost:3000/api/clients/${id}`).then(() => {
+    axios.delete(`http://localhost:3000/api/clients/${id}`, { headers: {"Authorization" : `Bearer ${token}`} }).then(() => {
     
       alert("Post deleted!");
       setClients(null)
@@ -63,10 +66,10 @@ const data = Clients.map((Client, index) => {
       <td > <p>{Client.adresse}</p></td>
       <td > <p>{Client.phone}</p></td>
       <td><Button size="sm"  variant="info" onClick={()=>handleUpdate(Client)}>
-            <GrIcons.GrUpdate size="10"  /><p className="m-1"  >Update</p>
+            <GrIcons.GrUpdate size="10"  />
           </Button></td>
       <td><Button size="sm"  variant="danger" onClick={()=> deleteData(Client._id)}>
-            <BsIcons.BsFillTrashFill size="10"  /><p className="m-1" >Delete</p>
+            <BsIcons.BsFillTrashFill size="10"  />
           </Button></td>
   
   </tr> 
@@ -89,7 +92,7 @@ const data = Clients.map((Client, index) => {
       <th scope="col">Delete</th>
       <th scope="col">
       <Button size="sm"  className='menu-bars' variant="primary" onClick={handleAdd}>
-            <BiIcons.BiUserPlus size="20"  /><p className="m-1" >Add User</p>
+            <BiIcons.BiUserPlus size="20"  />
           </Button>
       </th>
 
